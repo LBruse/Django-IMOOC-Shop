@@ -1,0 +1,46 @@
+.wrong-warp{
+    width: 630px;
+    height: 450px;
+    margin: 120px auto 0;
+}
+
+.wrong-warp img{
+    float: left;
+    height: 216px;
+    line-height: 216px;
+}
+
+.msg-wrap{
+    float: left;
+    margin: 90px 0 0 41px;
+}
+
+.errorInfo{
+    float: left;
+    color: #656e73;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 5px 50px 0 0;
+}
+
+.beback{
+    display: inline-block;
+    padding: 0 31px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    border: 1px solid #39b94e;
+    text-align: center;
+    font-size: 14px;
+    background: #dbe9df;
+    color: #39b94e;
+    cursor: pointer;
+}
+
+a:hover{
+    color: #ffffff;
+}
+
+.beback:hover{
+    background-color:#39b94e ;
+}

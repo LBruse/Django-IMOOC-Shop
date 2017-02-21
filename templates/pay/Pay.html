@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!--CSS-->
+    <style>
+
+        body{
+            font-size: 1.6rem;
+        }
+        /*取消row的默认样式*/
+        .row{
+            padding: 0;
+            margin: 0;
+        }
+        /*取消container的默认样式*/
+        .container{
+            width: 100%;
+        }
+
+        .left{
+            float: left;
+        }
+
+        .right{
+            float: right;
+        }
+
+
+        /*支付中心*/
+        .top{
+            height: 10rem;
+            background: url("{% static 'img/实战购物车.png' %}")repeat-x;
+            position: relative;
+        }
+
+        /*支付中心*/
+        .top h1{
+            float: left;
+            font-weight: bold;
+            margin-left: 10%;
+            padding-top:1% ;
+        }
+
+        /*课程明细*/
+        #ticket{
+            position: relative;
+            width: 80%;
+            border: 1px solid lightgray;
+            margin: -2% auto;
+            z-index: 2;
+            padding: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 6px 2px #E8E9EA;
+        }
+
+        /*订单号*/
+
+        .ticketTop .left .order{
+            font-weight: bold;
+            color:#07111b ;
+        }
+
+        .ticketTop .left .num{
+            color: #93999f;
+        }
+
+        .ticketTop .right{
+            color:#00a0dc;
+        }
+
+        .ticketTop .right span{
+            cursor: pointer;
+        }
+
+        .ticketTop + ul{
+            margin-top: 5rem;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .ticketTop + ul .course-item{
+            height: 12rem;
+            padding: 2rem;
+            background-color: #f3f5f7;
+            border-bottom:2px solid #ffffff ;
+        }
+
+        .ticketTop + ul .course-item img{
+            width: 15rem;
+        }
+
+        .ticketTop + ul .course-item dl{
+            padding-top: 2rem;
+            margin-left: 2rem;
+        }
+
+        .ticketTop + ul .course-item dl dt{
+            color: #07111b;
+            font-weight: 600;
+            font-size: 2rem;
+        }
+
+        .ticketTop + ul .course-item .right{
+            color: #f01414;
+            font-size: 2rem;
+            width: 20rem;
+            margin-top: 3rem;
+        }
+
+        .ticketTop + ul .course-item .right em{
+            float: left;
+            margin-top: -2px;
+            font-style: normal;
+            font-size: 1rem;
+        }
+
+        /*支付方式*/
+        .pay-method{
+            padding: 2rem 1rem;
+            border-top: 1px solid #d9dde1;
+            border-bottom: 1px solid #d9dde1;
+            margin-top: 3rem;
+        }
+
+        .pay-method li{
+            /*border:#f01414;*/
+            float: left;
+            margin-right: 2.5rem;
+            position: relative;
+            width: 15rem;
+            height: 7rem;
+            background-color:#f8fafc;
+            border: 2px solid #f8fafc;
+            cursor: pointer;
+        }
+
+        .pay-method li .bottomright{
+            display: none;
+            width: 1.5rem;
+            height: 1.5rem;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .pay-method li .bottomright .triangle{
+            width: 0;
+            height: 0;
+            border-bottom: 1.5rem solid red;
+            border-left: 1.5rem solid transparent;
+        }
+
+        .pay-method li .bottomright i{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        .pay-method ul p{
+            clear: both;
+        }
+
+
+        /*立即支付*/
+        .pay-summary{
+            margin-top: 2.5rem;
+        }
+        .pay-summary .warning{
+            font-size: 1.5rem;
+            color: #ff9900;
+            margin-top: 1rem;
+            line-height: 1.5rem;
+        }
+
+        .pay-summary .summary .total{
+            height: 2.5rem;
+        }
+
+        .pay-summary .summary .total .label{
+            font-size: 1.5rem;
+            color: #07111b;
+        }
+
+        .pay-summary .summary .total .price{
+            font-size: 2.5rem;
+            color: #f01414;
+            width: 10rem;
+            height: 5rem;
+            position: relative;
+        }
+
+        .pay-summary .summary .total .price em{
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1rem;
+            margin-right: 2rem;
+            font-style: normal;
+        }
+
+        .pay-summary .summary .total .price span{
+            margin-left: 1rem;
+        }
+
+        .pay-summary .pay-summary-warp{
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pay-summary .pay-summary-warp .pay-summary-submit{
+            display: inline-block;
+            width: 15rem;
+            height: 5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #f01414;
+            border-radius: 2px;
+            text-align: center;
+            line-height: 5rem;
+            cursor: pointer;
+        }
+
+        .pay-summary .question{
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pay-summary .agree{
+            font-size: 1.3rem;
+        }
+
+        .pay-summary .agree i{
+            color: #f01414;
+            cursor: pointer;
+        }
+
+        #ticket p:last-child{
+            clear: both;
+        }
+
+    </style>
+
+    <!--JS-->
+    <script>
+
+//	支付方式
+    var way;
+        $(function(){
+
+            show();
+
+            payMethod();
+
+            agree();
+
+            //弹出层
+
+			var alert=$(".noChoice-modal");
+
+			alert.css("display","none");
+
+            //ajax
+            $(".pay-summary-submit").click(function(event){
+                console.log('in');
+                if(parseInt(way)==1||parseInt(way)==2){
+                    $.ajax({
+                        cache: false,
+                        type:"POST",
+                        url:"/shop/pay/{{ order.order_id }}/"+way+"/",
+                        async: true,
+                        beforeSend:function(xhr, settings){
+                            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+                        },
+                        success: function(data){
+                            console.log('success');
+                            if(data.status=='success'){
+                                console.log('yes');
+                            }
+                        },
+                    });
+                }
+{#                else{#}
+{##}
+{#			        alert.css("display","block");#}
+{##}
+{#            	    event.preventDefault();#}
+{#            }#}
+                window.location.href='http://127.0.0.1:8000/shop/pay_history/';
+            });
+
+            //mask点击
+{#			mask.click(function(){#}
+{#				$(this).css("display","none");#}
+{#				alert.css("display","none");#}
+{#			});#}
+
+        });
+
+        function show(){
+            //            收起
+            var show=$(".ticketTop .right span");
+            var detail=$("#ticket > ul");
+
+            show.click(function(){
+                if(show.text()=="收起"){
+                    show.text("详情");
+                    detail.hide();
+                }else{
+                    show.text("收起");
+                    detail.show();
+                };
+            });
+        };
+
+        function payMethod(){
+//            支付方式
+             var payWay=$(".pay-method ul li");
+
+             payWay.click(function(){
+                $(this).css("border","1px solid #f01414");
+                $(this).find(".bottomright").show();
+                way=$(this).val();
+
+//                    其他支付方式
+                $(this).siblings().css("border","none");
+                $(this).siblings().find(".bottomright").hide();
+            });
+        };
+
+        function agree(){
+            var check=$(".agree").find(".fa-check");
+            var remove=$(".agree").find(".fa-remove");
+            var paySubmit=$(".pay-summary-warp a");
+
+            check.click(function(){
+                check.hide();
+                remove.removeClass("hide");
+                remove.show();
+                paySubmit.css("background-color","lightgrey");
+                paySubmit.text("无法支付");
+                paySubmit.removeAttr("href");
+            });
+
+
+            remove.click(function(){
+                check.show();
+                remove.hide();
+                paySubmit.css("background-color","#f01414");
+                paySubmit.text("立即支付");
+                paySubmit.attr("href","#");
+            });
+        }
+    </script>
+
+
+
+</head>
+<body>
+    <div class="row container">
+        <!--支付中心-->
+        <div class="top">
+            <div>
+                <h1>支付中心</h1>
+            </div>
+        </div>
+        <!--课程详细-->
+        <div id="ticket">
+            <!--订单-->
+            <div class="ticketTop">
+                <!--订单号-->
+                <div class="left">
+                    <span class="order">订单:</span>
+                    <span class="num">{{ order.order_id }}</span>
+                </div>
+                <!--收起-->
+                <div class="right">
+                    <span>收起</span>
+                </div>
+            </div>
+            <!--明细-->
+            <ul>
+                <!--课程-->
+                {% for fight in fights %}
+                    <li class="course-item">
+                    <div class="course-item-wrap left">
+                        <img src="{{ MEDIA_URL }}{{ fight.image }}" class="img-responsive left" alt="{{ fight.name }}">
+                        <dl class="left">
+                            <dt>{{ fight.name }}</dt>
+                            <dd></dd>
+                        </dl>
+                    </div>
+                    <!--价格-->
+                    <div class="right">
+                        <em>￥</em>
+                        <span>{{ fight.price }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+
+            </ul>
+            <!--支付方式-->
+            <div class="pay-method">
+                <h4 class="pay-method-title">支付方式</h4>
+                <ul>
+                    <li value="1" style="background-image: url({% static 'img/Pay/alipay.png' %});background-size:5rem;background-position: center;background-repeat: no-repeat">
+                        <div class="bottomright">
+                            <div class="triangle"></div>
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </li>
+                    <li value="2" style="background-image: url({% static 'img/Pay/Wechat.png' %});background-size:5rem;background-position: center;background-repeat: no-repeat">
+                        <div class="bottomright">
+                            <div class="triangle"></div>
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </li>
+                    <p></p>
+                </ul>
+            </div>
+            <!--结算-->
+            <div class="pay-summary">
+                <!--支付提醒-->
+                <div class="warning left">
+                    <span>请在 24小时0分钟 以内支付完成，如未完成此订单将自动关闭。课程需重新购买！</span>
+                </div>
+                <!--总金额-->
+                <div class="summary right">
+                    <!--应付金额-->
+                    <div class="total">
+                        <span class="label">应付金额</span>
+                        <span class="price">
+                            <em>￥</em>
+                            <span>{{ order.price }}</span>
+                        </span>
+                    </div>
+                    <!--立即支付-->
+                    <div class="pay-summary-warp">
+                        <a href="javascript:void(0);" class="pay-summary-submit">立即支付</a>
+                    </div>
+                    <!--有疑问?-->
+                    <div class="question">
+                        <a href="#" target="_blank">我有疑问，需要反馈？</a>
+                    </div>
+                    <!--我已同意-->
+                    <div class="agree">
+                        <i class="fa fa-check"></i>
+                        <i class="fa fa-remove hide"></i>
+                        <span>我已经阅读并同意</span>
+                        <a href="#" target="_blank">《用户付费协议》</a>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+        </div>
+
+    </div>
+</body>
+</html>

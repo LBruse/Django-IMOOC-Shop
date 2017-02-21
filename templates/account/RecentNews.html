@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Account/Sidebar.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <style>
+        /*背景*/
+        #background{
+            height: 200px;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+            background: url("{% static 'img/Account/temp1.jpg' %}");
+        }
+
+        /*内容宽度*/
+        .row{
+            width: 100%;
+        }
+
+        .userinfo a{
+            color: #ffffff;
+        }
+
+        .userinfo {
+            color: #ffffff;
+            margin-top: 2.4rem;
+        }
+
+        /*用户信息*/
+        .userinfo h2{
+            font-weight: 700;
+        }
+
+        /*关注、粉丝*/
+        .fans{
+            margin-top: 6rem;
+            color: #ffffff;
+        }
+
+        .fans div{
+            float: left;
+            margin-right: 20%;
+            text-align: center;
+        }
+
+        .fans p{
+            clear: both;
+        }
+
+        /*右侧正文*/
+        .container {
+            margin-top: 3.5rem;
+        }
+
+        /*我的实战*/
+        .container p:first-child{
+            font-size: 1.6rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            color: #787D82;
+        }
+
+        /*我的实战后的分割线*/
+        .container p+hr{
+            border-color: lightgrey;
+        }
+
+        .content{
+            padding-top: 1.5%;
+        }
+
+        /*头像*/
+        .headimg{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            float: left;
+        }
+
+        /*内容部分的文字排版*/
+        .word{
+            margin-left: 5.2rem;
+        }
+
+        /*用户名*/
+        .word h4{
+            font-weight: bold;
+        }
+
+        /*开始学习日期*/
+        .word > p:nth-child(2){
+            font-size: 1rem;
+            color: grey;
+        }
+
+        /*学习了课程*/
+        .word > p:nth-child(3){
+            font-size: 1.8rem;
+        }
+
+        /*课程图文*/
+        /*背景色*/
+        .graphic{
+            background-color: #F2F4F6;
+            border: 1px solid grey;
+        }
+
+        /*P标签字体大小*/
+        .graphic p{
+            font-size: 1.5rem;
+        }
+
+        /*图片*/
+        .graphic img{
+            float: left;
+        }
+
+        /*描述*/
+        .graphic > div {
+            margin-top: 3%;
+            margin-left: 30%;
+        }
+
+        /*课程名称*/
+        .graphic div h4{
+            color: #4D555D;
+        }
+        /*hover颜色*/
+        .graphic div h4:hover{
+            color: #14191E;
+        }
+
+        /*课程难度，学习用时，更新进度*/
+        .graphic div p:nth-child(2),
+        .graphic div p:nth-child(3),
+        .graphic div p:nth-child(4){
+            display: inline-block;
+            margin-top: 1%;
+            margin-right: 3%;
+
+        }
+
+        /*课程简介*/
+        .graphic div p:nth-child(5){
+            margin-top: 2%;
+        }
+
+        /*内容分割线*/
+        .content hr{
+            border-color:lightgrey ;
+            margin-top: 3%;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!--背景层-->
+    <div id="background">
+
+    </div>
+    <!--页面内容-->
+    <div class="row">
+        <!--左侧头像、导航-->
+        <div class="col-md-3">
+            <div class="sidebar">
+                <!--头像-->
+                <div><img src="{{ MEDIA_URL }}{{ account.image }}" class="img-responsive"/>
+                    <a href="#"><i class="fa fa-cog"></i></a>
+                </div>
+                <!--导航-->
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="#" class="active">
+                                <i class="fa fa-home"></i>
+                                <span>主页</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-envelope"></i>
+                                <span>课程</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-book"></i>
+                                <span>实战</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-clipboard"></i>
+                                <span>路径</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-file-text"></i>
+                                <span>猿问</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-comments-o"></i>
+                                <span>手记</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="notActive">
+                                <i class="fa fa-vk"></i>
+                                <span>wiki</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:cart' 0 %}" class="notActive" target="_blank">
+                                <i class="fa fa-vk"></i>
+                                <span>购物车</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop:pay_history' %}" class="notActive" target="_blank">
+                                <i class="fa fa-vk"></i>
+                                <span>订单历史</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}" class="notActive">
+                                <i class="fa fa-vk"></i>
+                                <span>退出</span>
+                                <b class="fa fa-caret-right"></b>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>-
+        <!--右侧-->
+        <div class="col-md-9">
+            <!--右侧头部-->
+            <!--用户信息-->
+            <div class="col-md-5 userinfo">
+                <h2>LBruse</h2>
+                <p>学生&nbsp;&nbsp;&nbsp;学习时长&nbsp;{{ account.learn_time }}分钟&nbsp;&nbsp;&nbsp;
+                    <a href="#">积分&nbsp;{{ account.integral }}</a>&nbsp;
+                    <a href="#">经验&nbsp;{{ account.experience }}</a>
+                </p>
+                <p>{{ account.signature }}</p>
+            </div>
+            <!--关注、粉丝-->
+            <div class="col-md-2 col-md-push-5 fans">
+                <div>
+                    <h5>0</h5>
+                    <p>关注</p>
+                </div>
+                <div>
+                    <h5>0</h5>
+                    <p>粉丝</p>
+                </div>
+                <p></p>
+            </div>
+            <!--右侧正文-->
+            <div class="row container col-md-12">
+                <p>最新动态</p>
+                <hr/>
+
+                <!--动态-->
+                <div class="col-md-12 content">
+                    <form action="#" method="post">
+                        <img src="{% static 'img/Account/Bruse.jpg' %}"class="img-responsive headimg"/>
+                        <div class="word">
+                            <h4>LBruse</h4>
+                            <p>2016-10-28</p>
+                            <p>学习了课程</p>
+                            <div class="graphic">
+                                <img src="{% static 'img/Course/JavaScript入门篇.jpg' %}" class="img-responsive">
+                                <div>
+                                    <h4>JAVA遇见HTML——Servlet篇</h4>
+                                    <p>初级</p>
+                                    <p>3小时10分</p>
+                                    <p>更新完毕</p>
+                                    <p>Servlet是JAVA Web开发的核心基础，在项目中的应用非常广泛。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                </div>
+
+                <!--动态-->
+                <div class="col-md-12 content">
+                    <form action="#" method="post">
+                        <img src="{% static 'img/Account/Bruse.jpg' %}"class="img-responsive headimg"/>
+                        <div class="word">
+                            <h4>LBruse</h4>
+                            <p>2016-10-28</p>
+                            <p>学习了课程</p>
+                            <div class="graphic">
+                                <img src="{% static 'img/Course/JavaScript进阶篇.jpg' %}" class="img-responsive">
+                                <div>
+                                    <h4>JAVA遇见HTML——Servlet篇</h4>
+                                    <p>初级</p>
+                                    <p>3小时10分</p>
+                                    <p>更新完毕</p>
+                                    <p>Servlet是JAVA Web开发的核心基础，在项目中的应用非常广泛。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

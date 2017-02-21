@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.row{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+a{
+    color: #787d82;
+}

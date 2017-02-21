@@ -1,0 +1,19 @@
+
+#videoPlay{
+    max-width: 900px;
+    max-height: 500px;
+    margin: 0 auto;
+    display: none;
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+#videoPlay i{
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    text-align: center;
+    opacity: .5;
+    cursor: pointer;
+}

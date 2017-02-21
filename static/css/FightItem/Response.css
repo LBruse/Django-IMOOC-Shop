@@ -1,0 +1,117 @@
+/*响应式*/
+
+    /*Phone*/
+@media only screen and (max-width: 30em) {
+    /*.cart .price{*/
+        /*color: #ffff00!important;*/
+    /*}*/
+
+    /*立即购买*/
+    .cart .buyNow form div{
+        width: 18rem!important;
+    }
+
+    /*nav*/
+    .navInfo div ul li{
+        display: block;
+        float: none;
+    }
+
+    /*video*/
+    /*标题*/
+    .videoInfo h3{
+        padding-top: 1rem;
+    }
+
+    /*段落*/
+    .videoInfo p{
+        padding: 1.5rem!important;
+    }
+
+    /*播放按钮*/
+    .videoInfo i{
+        color: #ffffff;
+        font-size: 6rem;
+    }
+
+    .info-recommendcourse .course-wrap{
+        margin:2.5rem!important;
+    }
+
+    /*容器*/
+    .info-recommendcourse .course-wrap .course-box{
+        max-width: 120px;
+    }
+
+    /*课程标题*/
+    .info-recommendcourse .course-wrap .course-info{
+        padding: 0 2px;
+        text-align: center;
+    }
+
+    /*容器*/
+    .info-recommendcourse .course-wrap .course-box{
+        height: 160px;
+    }
+
+    /*课程名称*/
+    .info-recommendcourse .course-wrap .course-info h3{
+        max-height: 50px;
+    }
+}
+
+/*Pad*/
+@media only screen and (max-width: 50em) {
+    /*.cart .price{*/
+        /*color: deepskyblue;*/
+    /*}*/
+
+    /*导航*/
+    .navInfo div ul li{
+        margin-right: 2rem;
+    }
+
+    /*video*/
+    .videoInfo h3{
+        font-size: 3.4rem;
+    }
+
+    .videoInfo p{
+        width: auto;
+        padding: 2rem;
+    }
+
+    /*课前必学*/
+    .info-recommendcourse{
+        padding: 0;
+    }
+
+    .info-recommendcourse .course-wrap{
+        margin: 3rem;
+    }
+    /*容器*/
+    .info-recommendcourse .course-wrap .course-box{
+        width: 165px;
+    }
+
+    /*课程信息*/
+    .info-recommendcourse .course-wrap .course-info{
+        top: 70px!important;
+    }
+
+    /*课程名称*/
+    .info-recommendcourse .course-wrap .course-info h3{
+        /*overflow: hidden;*/
+    }
+
+    /*等级&简介*/
+    .info-recommendcourse .course-wrap .course-info h3 i,
+    .info-recommendcourse .course-wrap .course-info p{
+        display: none;
+    }
+
+    /*学习人数*/
+    .info-recommendcourse .course-wrap .course-stu{
+        height: 3rem;
+    }
+}

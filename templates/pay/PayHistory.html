@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!--CSS-->
+    <style>
+
+        body{
+            font-size: 1.6rem;
+        }
+        /*取消row的默认样式*/
+        .row{
+            padding: 0;
+            margin: 0;
+        }
+        /*取消container的默认样式*/
+        .container{
+            width: 100%;
+        }
+
+        .left{
+            float: left;
+        }
+
+        .right{
+            float: right;
+        }
+
+
+        /*支付中心*/
+        .top{
+            height: 10rem;
+            background: url("{% static 'img/实战购物车.png' %}")repeat-x;
+            position: relative;
+        }
+
+        /*支付中心*/
+        .top h1{
+            float: left;
+            font-weight: bold;
+            margin-left: 10%;
+            padding-top:1% ;
+
+        }
+
+        .top h1 + div{
+            margin-top: 4rem;
+            margin-left: 1rem;
+        }
+
+        .top h1 + div span{
+            color: #f01414;
+            margin: 0 0.5rem;
+        }
+
+        .top .right{
+            margin-right: 15%;
+            margin-top: 4rem;
+        }
+
+        .top .right .num{
+            color: #f01414;
+            font-size: 2rem;
+        }
+
+        /*订单*/
+        .myOrder{
+            width: 80%;
+            margin: 2.5rem auto 0;
+        }
+
+        .myOrder-list li{
+            padding: 2rem;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 5rem;
+            background-color: #ffffff;
+        }
+
+        .myOrder-list li .myOrder-number{
+            font-weight: bold;
+            color: #4d555d;
+        }
+
+        .myOrder-list li .myOrder-number span{
+            color: #93999f;
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        .myOrder-list li .myOrder-number a{
+            color:#93999f ;
+            font-weight: 500;
+        }
+
+        .myOrder-list .myOrder-course{
+            margin-top:2.5rem ;
+            position: relative;
+        }
+
+        .myOrder-list .myOrder-course .course-del{
+            margin-right:30rem;
+        }
+        .myOrder-list .myOrder-course .course-del dd{
+            padding: 2.5rem;
+            box-sizing: border-box;
+            border-top: 1px solid #d9dde1;
+        }
+
+        .myOrder-list .myOrder-course .course-del dd a{
+            color: #14191e;
+        }
+
+        .myOrder-list .myOrder-course .course-del dd img{
+            width: 15rem;
+        }
+
+        .myOrder-list .myOrder-course .course-del dd .course-name{
+            color: #07111b;
+            font-size: 2rem;
+            margin: 1.5rem 0 1rem 0;
+            line-height: 2rem;
+            margin-left: 18rem;
+        }
+
+        .myOrder-list .myOrder-course .course-del dd  .course-tip{
+            color: #93999f;
+            margin-left: 18rem;
+            cursor: pointer;
+        }
+
+        .myOrder-list .myOrder-course .course-money{
+            width: 15rem;
+            border-left: 1px solid #d9dde1;
+            border-top: 1px solid #d9dde1;
+            text-align: center;
+            color: #f01414;
+            font-size: 2.5rem;
+            right: 15rem;
+            padding-top: 5rem;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            line-height: 2.5rem;
+        }
+
+        .myOrder-list .myOrder-course .course-money .rmb{
+            font-size: 1rem;
+            position: relative;
+            top: -1rem;
+            line-height: 1.5rem;
+        }
+
+        .myOrder-list .myOrder-course .course-action{
+            width: 15rem;
+            border-left: 1px solid #d9dde1;
+            border-top: 1px solid #d9dde1;
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: center;
+            height: 100%;
+        }
+
+        .myOrder-list .myOrder-course .course-action .pay-now{
+            display: inline-block;
+            width: 10rem;
+            height: 2.5rem;
+            color: #ffffff;
+            background-color: #f01414;
+            border-radius: 0.2rem;
+            margin-top: 2rem;
+            margin-bottom: 1.7rem;
+            line-height: 2.5rem;
+        }
+
+        .myOrder-list .myOrder-course .course-action .order-cancel{
+            color: #4d555d;
+            line-height: 1rem;
+        }
+
+        .myOrder-list .myOrder-course .course-action .order-close{
+            font-weight: bold;
+            color: #93999f;
+            margin-top: 5rem;
+        }
+
+        .myOrder-list .myOrder-course .course-action .order-finish{
+            font-weight: bold;
+            color: #4d555d;
+            margin-top: 5rem;
+            line-height: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .myOrder-list .myOrder-course .course-action .pay-way{
+            font-size: 1.5rem;
+            color: #93999f;
+            line-height: 1.5rem;
+        }
+
+    </style>
+
+    <!--JS-->
+    <script>
+        $(function(){
+            var payNow=$(".pay-now");
+            var span=$(".pay-now + span");
+
+        });
+    </script>
+
+</head>
+<body>
+    <div class="row container">
+        <!--我的历史订单-->
+        <div class="top">
+            <div>
+                <h1>我的历史订单</h1>
+                <div class="left">共<span>{{ order_nums }}</span>个订单</div>
+            </div>
+            <div class="right">
+                <span>
+                    <a href="{% url 'shop:cart' 0 %}" target="_blank">我的购物车</a>
+                </span>
+                <span class="num">{{ cart_nums }}</span>
+            </div>
+        </div>
+        <!--订单-->
+        <div class="myOrder">
+            <ul class="myOrder-list">
+                {% for order in orders %}
+                    <li>
+                    <p class="myOrder-number">
+                        订单编号：{{ order.order_id }}&nbsp;
+                        <span class="date">{{ order.add_date }}</span>
+
+                        <a href="#" class="right">我有疑问，需要反馈？</a>
+                    </p>
+                    <div class="myOrder-course">
+                        <!--课程详情-->
+                        <dl class="course-del">
+                            {% for fight in fights %}
+                                {% ifequal fight.order_id order.order_id %}
+                                    {% for course in courses %}
+                                        {% ifequal course.id fight.course_id %}
+                                            <dd>
+                                                <a href="#">
+                                                    <img src="{{ MEDIA_URL }}{{ course.image }}" class="img-responsive left" alt="{{ course.name }}">
+                                                    <p class="course-name">{{ course.name }}</p>
+                                                </a>
+                                                <p class="course-tip">赠送{{ course.cloud_service }}天的慕课云服务</p>
+                                            </dd>
+                                        {% endifequal %}
+                                    {% endfor %}
+                                {% endifequal %}
+                            {% endfor %}
+
+
+                        </dl>
+                        <!--订单价格-->
+                        <div class="course-money">
+                            <span class="rmb">￥</span>
+                            {{ order.price }}
+                        </div>
+                        <!--状态-->
+                        <div class="course-action">
+                            {% ifequal order.is_pay 0 %}
+                                <div>
+                                    <a class="pay-now" href="{% url 'shop:pay' order.order_id 0 %}" target="_blank">立即支付</a>
+                                    <span class="hide">{{ order.price }}</span>
+                                </div>
+                                <div>
+                                   <a class="order-cancel" href="{% url 'shop:cancel_pay' order.order_id %}">取消订单</a>
+                                </div>
+
+                            {% endifequal %}
+                            {% ifequal order.is_pay 1 %}
+                                <p class="order-finish">订单已完成</p>
+                                <p class="pay-way">{{ order.get_pay_way_display }}支付</p>
+                            {% endifequal %}
+                            {% ifequal order.is_pay 2 %}
+                                <p class="order-close">已关闭</p>
+                            {% endifequal %}
+
+
+
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/*购买*/
+.cart{
+    width: 100%;
+    overflow: hidden;
+}
+
+/*----------------------------------------------------------------------*/
+
+/*细节*/
+.cart .littlemsg{
+    text-align: center;
+    margin-top: 17rem;
+}
+
+.cart .littlemsg .itemDetail{
+    display: inline-block;
+    font-size: 1.6rem;
+    margin: 0 3rem;
+    line-height: 2.5rem;
+    color: #ffffff;
+}
+
+/*评分*/
+.cart .littlemsg .itemDetail .fa-star{
+    color: #ffff00;
+}
+
+/*价格*/
+.cart .price{
+    text-align: center;
+    padding-top: 2.5rem;
+    font-size: 3.5rem;
+    color: #F01400;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/*立即购买*/
+.cart .buyNow{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+/*居中*/
+.cart .buyNow form div{
+    width: 20rem;
+    margin: 0 auto;
+}
+
+/*input样式*/
+.cart .buyNow input{
+    width: 10.5rem;
+    border-radius: 0;
+    background-color: #F01400;
+    color: #ffffff;
+    height: 4rem;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/*添加到购物车*/
+.cart .buyNow a{
+    display: inline-block;
+    width: 5.5rem;
+    border-radius: 0;
+    background-color: #F01400;
+    color: #ffffff;
+    height: 4rem;
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 3.3rem;
+    font-weight: 600;
+}
+
+/*课程介绍*/
+/*导航*/
+.navInfo div{
+    text-align: center;
+}
+
+.navInfo ul{
+    margin-top: 2rem;
+    display: inline-block;
+}
+
+.navInfo div ul li{
+    float: left;
+    font-size: 2rem;
+    margin-right: 4rem;
+}
+
+
+/*----------------------------------------------------------------------*/
+
+/*视频介绍*/
+.videoInfo{
+    max-width: 900px;
+    height: 500px;
+    text-align: center;
+    margin: 1.5rem auto;
+    background-size: cover;
+    background-position: center;
+}
+
+/*----------------------------------------------------------------------*/
+
+/*课程名称*/
+.videoInfo h3{
+    font-size: 4rem;
+    color: #ffffff;
+    padding-top: 12rem;
+}
+
+/*课程简介*/
+.videoInfo p{
+    max-width:80%;
+    color: #ffffff;
+    margin: 3rem auto;
+    line-height: 3rem;
+    font-size: 1.8rem;
+
+}
+/*视频播放*/
+.videoInfo i{
+    color: grey;
+    font-size: 7rem;
+    cursor: pointer;
+}
+
+.videoInfo i:hover{
+    color: #ffffff;
+}
+
+/*课前必学*/
+.info-recommendcourse{
+    width: 100%;
+    overflow: hidden;
+    padding-top: 3rem;
+}
+
+/*课前必学title*/
+.info-recommendcourse h3{
+    font-size: 2rem;
+    color: #4D555D;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+/*课程list*/
+.info-recommendcourse{
+    padding: 0 4.5rem;
+}
+
+.info-recommendcourse .course-wrap{
+    float: left;
+    margin: 1rem;
+    background-color:#ffffff ;
+    position: relative;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+}
+
+/*链接*/
+.info-recommendcourse .course-wrap a{
+    color: #14191E;
+    background-color: transparent;
+}
+
+/*课程容器*/
+.info-recommendcourse .course-wrap .course-box{
+    width: 224px;
+    height: 172px;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/*课程信息*/
+.info-recommendcourse .course-wrap .course-info{
+    position: absolute;
+    padding: 0 20px;
+    transition:top .5s;
+    top: 65px;
+    height: 144px;
+    width: 100%;
+    background: url("../../img/bg-course.png");
+}
+
+/*课程名称*/
+.info-recommendcourse .course-wrap .course-info h3{
+    margin: 0;
+    padding: 1.5rem 0 1.5rem;
+    font-size: 1.4rem;
+    max-height: 40px;
+    color: #07111b;
+    line-height: 1rem;
+    font-weight: normal;
+}
+
+
+/*课程等级*/
+.info-recommendcourse .course-wrap .course-info h3 i{
+    float: left;
+    font-style: normal;
+    font-size: 1rem;
+    margin-right: 4px;
+    padding: 2px;
+    color: #ffffff;
+    background-color: #93999F;
+    border-radius: 1px;
+    line-height: 1rem;
+}
+
+/*课程介绍*/
+.info-recommendcourse .course-wrap .course-info p{
+    color: #93999F;
+    font-size: 1.2rem;
+    height: 2rem;
+    line-height: 1.5rem;
+}
+
+/*学习人数*/
+.info-recommendcourse .course-wrap .course-stu{
+    position: absolute;
+    padding: 0 1.5rem;
+    bottom: 0;
+    width: 100%;
+    height: 3.5rem;
+    background-color: #ffffff;
+    color: #93999F;
+    font-size: 1rem;
+    line-height: 1.8rem;
+}

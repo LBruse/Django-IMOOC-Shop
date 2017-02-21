@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/FightItem/ItemsCommon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Sign/Sign.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery.validate-1.13.1.js' %}"></script>
+    <script src="{% static 'js/Index/Sign.js' %}"></script>
+    <script src="{% static 'js/Index/Nav_show.js' %}"></script>
+
+    <!--CSS-->
+    <style>
+        /*头部*/
+        header{
+            margin-top: 1rem;
+            height: 5rem;
+        }
+
+        .page-container{
+            padding-right: 2rem;
+            width: auto;
+            height: 4.5rem;
+            position: relative;
+            z-index: 1000;
+        }
+
+        /*logo*/
+        .logo{
+            margin: 0 1.5rem;
+            float: left;
+            background-size: cover;
+        }
+
+        .logo a{
+            display: block;
+            height: 5rem;
+            width: 5rem;
+            background-size: 100%;
+        }
+
+        .logo img{
+            height: 5rem;
+            width: 15rem;
+        }
+
+        /*nav-left*/
+        .nav-left{
+            float: left;
+            margin-left:10rem;
+        }
+
+        .nav-left li{
+            float: left;
+        }
+
+        .nav-left a{
+            padding: 0 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            height: 5rem;
+            line-height: 5rem;
+        }
+
+        /*nav-right*/
+        .login-area{
+            float: right;
+            position: relative;
+        }
+
+        .logined>li{
+            float: left;
+            position: relative;
+        }
+
+        .logined li > a{
+            height: 5rem;
+            line-height: 5rem;
+            width: 5rem;
+            color: #787D82;
+            text-align: center;
+            transition:background-color .2s;
+            display: block;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /*头像*/
+        .LoginImg{
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: #4d5559;
+            margin-top: -1rem;
+            border-radius: 50%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        /*搜索*/
+        .search{
+            height: 5rem;
+            float: right;
+            position: relative;
+            margin-right: 2rem;
+        }
+
+        .search-area{
+            border: 0 solid #ffffff;
+            border-bottom: 1px solid #d9dde1;
+            float: right;
+            height: 3rem;
+            margin: 1rem auto;
+        }
+
+        .search-area input{
+            color: #71777d;
+            background-color: transparent;
+            height: 3rem;
+            width: 15rem;
+            line-height: 3rem;
+            font-size: 2rem;
+            border: 0;
+        }
+
+        .search-area a{
+            color: #787D82;
+            font-size: 2rem;
+        }
+
+        /*bk*/
+        .bk{
+            width: 100%;
+            height: 490px;
+            position: absolute;
+            top: 0;
+            background: url("{% static 'img/Index/bk.jpg' %}");
+        }
+
+        /*banner*/
+        .banner{
+            position: relative;
+            height: 460px;
+            overflow: hidden;
+            width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+        }
+
+        .menuwrap{
+            background-color: rgba(7,17,27,.5);
+            opacity: .502;
+            width: 244px;
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 460px;
+        }
+
+        .submenu{
+            display: none;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #d9dde1;
+            position: absolute;
+            left: 244px;
+            top: 0;
+            width: 730px;
+            height: 458px;
+            z-index: 581;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,.1);
+        }
+
+        .submenu .innerBox{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .subinnerBox{
+            width: 652px;
+            margin-left: 40px;
+            overflow: hidden;
+        }
+
+        .subinnerBox a:hover{
+            color: #F01400;
+        }
+
+        .subinnerBox .title{
+            margin-top: 34px;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f01414;
+        }
+
+        .bold{
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .subinnerBox a{
+            color: #14191e;
+            line-height: 2rem;
+        }
+
+        .subinnerBox p{
+            height: 32px;
+            overflow: hidden;
+        }
+
+        /*menuContent*/
+        .menuContent{
+            width: 244px;
+            z-index: 2;
+            padding-top: 1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 460px;
+        }
+
+        .menuContent .item{
+            height: 64px;
+            color: #ffffff;
+            line-height: 64px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding:0 24px ;
+            position: relative;
+        }
+
+        .menuContent .item .group{
+            display: block;
+            padding: 0 8px;
+            border-bottom: 1px solid rgba(255,255,255,.2);
+            height: 64px;
+            font-size: 1.6rem;
+        }
+
+        .menuContent .item .group i{
+            float: right;
+            line-height: 60px;
+            font-size: 1.7rem;
+        }
+
+        /*bannerContent*/
+        .bannerContent a{
+            float: left;
+            width: 1200px;
+            height: 460px;
+
+        }
+
+        .banner-slide{
+            position: absolute;
+            width: 1200px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .banner1{
+            background: url("{% static 'img/Index/banner1.jpg' %}")no-repeat center center;
+        }
+
+        .banner2{
+            display: none;
+            background: url("{% static 'img/Index/banner2.jpg' %}")no-repeat center center;
+        }
+
+        .banner3{
+            display: none;
+            background: url("{% static 'img/Index/banner3.jpg' %}")no-repeat center center;
+        }
+
+        .banner4{
+            display: none;
+            background: url("{% static 'img/Index/banner4.jpg' %}")no-repeat center center;
+        }
+
+        .banner5{
+            display: none;
+            background: url("{% static 'img/Index/banner5.jpg' %}")no-repeat center center;
+        }
+
+        /*banner-circle*/
+        .banner-circle{
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: right;
+            padding-right: 24px;
+            line-height: 12px;
+        }
+
+        .banner-circle span{
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            margin-left: 1rem;
+            background-color: rgba(7,17,27,.4);
+            transition:transform .2s;
+            cursor: pointer;
+            box-shadow: 0 0 0 2px rgba(255,255,255,.8) inset;
+        }
+
+        .on{
+            background-color: #ffffff!important;
+        }
+
+        /*banner-prev*/
+        .banner .prev{
+            transform:rotate(180deg);
+            left: 244px;
+            background:url("{% static 'img/Index/next.png' %}")no-repeat center;
+        }
+
+        /*banner-next*/
+        .banner .next{
+            right: 0;
+            background:url("{% static 'img/Index/next.png' %}")no-repeat center;
+        }
+
+        .banner .prev,
+        .banner .next{
+            top: 42%;
+            height: 80px;
+            width: 40px;
+            position: absolute;
+            cursor: pointer;
+            background-color: #07111b;
+            opacity: 0.8;
+        }
+
+
+
+        /*推荐实战*/
+        .outwrap-recomend{
+            height: 216px;
+            margin-top: 2rem;
+        }
+
+        /*推荐实战/课程Common*/
+        .contentwrap{
+            width: 1200px;
+            margin: auto;
+        }
+
+        .contentwrap .recomend{
+            line-height: 2.5rem;
+            font-size: 1.7rem;
+            color: #07111b;
+            /*margin-top: 2.5rem;*/
+            /*margin-bottom: 2rem;*/
+        }
+
+        .outwrap-recomend .contentwrap .recomend a,
+        .outwrap-course .contentwrap .recomend a{
+            float: right;
+            color: #4d555d;
+            font-weight: 400;
+        }
+
+        /*推荐课程*/
+        .outwrap-course{
+            height: 258px;
+            margin-top: 3.5rem;
+        }
+
+        /*路径课程*/
+        .outwrap-content{
+            background-color: #f3f5f7;
+            padding-bottom: 60px;
+        }
+
+        /*Web前端工程师*/
+        /*路径*/
+        .web .classify{
+            background: url("{% static 'img/Index/Web.png' %}");
+        }
+
+        .classify{
+            position: relative;
+            margin-top: 2rem;
+            margin-right: 1.5rem;
+            float: left;
+            width: 224px;
+            height: 364px;
+        }
+
+        /*路径名*/
+        .classify .title{
+            font-size: 3rem;
+            line-height: 2.5rem;
+            color: #ffffff;
+            font-weight: 700;
+            margin-top: 3.5rem;
+            margin-left: 2rem;
+        }
+
+        /*路径连接*/
+        .classify .career-path{
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            color: #ffffff;
+            display: block;
+            margin: 2rem 0 0 2rem;
+        }
+
+        /*相关课程*/
+        .classify .raise-weapon{
+            position: absolute;
+            bottom: 1rem;
+            margin-left: 2rem;
+        }
+
+        .classify .raise-weapon a{
+            color: #c03;
+            display: block;
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            line-height: 1.5rem;
+            width: 16rem;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+
+
+        .contentwrap .longer{
+            margin-top: 2rem;
+            margin-right: 2rem;
+            box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+            width: 468px;
+            height: 172px;
+            float: left;
+            font-size: 2rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+            line-height: 172px;
+            overflow: hidden;
+        }
+
+        .contentwrap .heigher{
+            margin-right: 0;
+            width: 224px;
+            height: 364px;
+            float: right;
+        }
+
+        .contentwrap .heigher .list{
+            padding-top: 1rem;
+            border-top: 1px solid #d9dde1 ;
+            font-size: 1.3rem;
+            line-height: 1rem;
+            width: 184px;
+            margin: auto;
+            color: #07111b;
+            position: relative;
+            z-index: 2;
+            background-color: #ffffff;
+        }
+
+        .contentwrap .heigher .list a p{
+            position: relative;
+            padding-left: 1rem;
+            width: 180px;
+            height: 27px;
+            line-height: 27px;
+            overflow: hidden;
+        }
+
+        .contentwrap .course-wrap{
+            margin-top: 1.8rem;
+        }
+
+        .contentwrap .clear{
+            clear: both;
+        }
+
+        /*JAVA前端工程师*/
+        .java .classify{
+            background: url("{% static 'img/Index/Java.png' %}");
+        }
+
+        .java .raise-weapon a{
+            color: #069;
+        }
+
+        .java .longer{
+            width: 702px;
+        }
+
+        /*PHP工程师*/
+        .php .classify{
+            background: url("{% static 'img/Index/PHP.png' %}");
+        }
+
+        .php .longer{
+            width: 468px;
+            height: 364px;
+        }
+
+        .php .raise-weapon a{
+            color: #4343cc;
+        }
+
+        /*Android前端工程师*/
+        .android .classify{
+            background: url("{% static 'img/Index/Android.png' %}");
+        }
+
+        .android .longer{
+            width: 702px;
+        }
+
+        .android .raise-weapon a{
+            color: #00994d;
+        }
+
+        /*iOS工程师*/
+        .ios .classify{
+            background: url("{% static 'img/Index/iOS.png' %}");
+        }
+
+        .android .longer{
+            width: 702px;
+        }
+
+        .ios .raise-weapon a{
+            color: #099;
+        }
+
+        /*Linux运维工程师*/
+        .linux .classify{
+            height: 172px;
+            background: url("{% static 'img/Index/Linux.png' %}");
+        }
+
+        .linux .course-wrap{
+            margin: 0;
+            margin-top: 2rem;
+            margin-right:1rem ;
+        }
+
+        /*手记*/
+        .note .classify{
+            background: url("{% static 'img/Index/shoujileft.png' %}");
+        }
+
+        .note .classify p:nth-child(2){
+            color: #ffffff;
+            text-align: center;
+            line-height: 2.5rem;
+            padding-bottom: 8rem;
+        }
+
+        .note .link-btn{
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            height: 34px;
+            font-size: 14px;
+            line-height: 34px;
+            color: #ffffff;
+            text-align: center;
+            margin: auto auto 8px;
+            width: 184px;
+            cursor: pointer;
+        }
+
+        .note .longer{
+            margin-right: 0.5rem;
+        }
+
+        .note .longer{
+            background-color: #ffffff;
+        }
+
+        .note .longer .left{
+            float: left;
+            width: 82px;
+            margin: 32px;
+            height: 60px;
+            font-size: 20px;
+            color: #07111b;
+            line-height: 20px;
+            font-weight: 700;
+        }
+
+        .note .longer .right{
+            float: right;
+            margin-right: 32px;
+            text-align: left;
+            width: 290px;
+            margin-top: 23px;
+        }
+
+        .note .longer .right a{
+            font-size: 1.4rem;
+            line-height: 1.5rem;
+            color: #07111b;
+            font-weight: 400;
+        }
+
+
+    </style>
+
+    <!--课程-->
+    <style>
+        .course-wrap{
+            float: left;
+            margin: 0.5rem;
+            background-color:#ffffff ;
+            position: relative;
+            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+        }
+
+        .recomendContent .course-wrap{
+            margin: 0.83rem;
+        }
+
+        .recomendContent .course-wrap:first-child{
+            margin-left:0;
+        }
+
+        .recomendContent .course-wrap:last-child{
+            margin-right:0;
+        }
+
+        /*链接*/
+        .course-wrap a{
+            color: #14191E;
+            background-color: transparent;
+        }
+
+        /*课程容器*/
+        .course-wrap .course-box{
+            width: 224px;
+            height: 172px;
+            overflow: hidden;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /*课程信息*/
+        .course-wrap .course-info{
+            position: absolute;
+            padding: 0 20px;
+            transition:top .5s;
+            top: 65px;
+            height: 144px;
+            width: 100%;
+            background: url("{% static 'img/bg-course.png' %}");
+        }
+
+        /*课程名称*/
+        .course-wrap .course-info h3{
+            margin: 0;
+            padding: 1.2rem 0 2rem;
+            font-size: 1.5rem;
+            max-height: 40px;
+            color: #07111b;
+            line-height: 1.5rem;
+            font-weight: normal;
+        }
+
+
+        /*课程等级*/
+        .course-wrap .course-info h3 i{
+            float: left;
+            font-style: normal;
+            font-size: 1rem;
+            margin-right: 4px;
+            padding: 2px;
+            color: #ffffff;
+            background-color: #93999F;
+            border-radius: 1px;
+            line-height: 1rem;
+            margin-bottom:0.2rem ;
+        }
+
+        /*课程介绍*/
+        .course-wrap .course-info p{
+            display: none;
+            color: #93999F;
+            font-size: 1.3rem;
+            height: 2rem;
+            line-height: 1.5rem;
+            margin-top: 0.7rem;
+        }
+
+        /*学习人数*/
+        .course-wrap .course-stu{
+            position: absolute;
+            padding: 0 1.5rem;
+            bottom: 0;
+            width: 100%;
+            height: 3.5rem;
+            background-color: #ffffff;
+            color: #93999F;
+            font-size: 1rem;
+            line-height: 1.8rem;
+        }
+    </style>
+
+    <!--jQuery-->
+    <script>
+        $(function(){
+            courseHover();
+        });
+
+        function courseHover(){
+//            获取所有课程list
+            var wrap=$(".course-wrap");
+
+//            简介动态效果
+            $(".course-wrap").mouseover(function(){
+                $(this).find(".course-info").css("top","25px");
+                $(this).find(".course-info p").css("display","block");
+                $(this).css("box-shadow","0 5px 20px 2px rgba(0,0,0,0.3)");
+            }).mouseout(function(){
+                $(this).find(".course-info").css("top","65px");
+                $(this).find(".course-info p").css("display","none");
+                $(this).css("box-shadow","0 5px 10px 0 rgba(0,0,0,0.1)");
+            });
+
+        };
+    </script>
+
+    <!--Validation-->
+    <script>
+        $(function(){
+//            登录
+            $("#signForm").validate({
+                rules:{
+                    login:{
+                        required:true
+                    },
+                    pwd:{
+                        required:true,
+                        rangelength:[6,16],
+                        checkSpace:true
+                    }
+                },
+                messages:{
+                    login:{
+                        required:'请输入正确的邮箱或手机号'
+                    },
+                    pwd:{
+                        required:'请输入6-16位密码，区分大小写，不能使用空格！',
+                        rangelength:'请输入6-16位密码，区分大小写，不能使用空格！',
+                        checkSpace:"密码不能包含空格"
+                    }
+                }
+            });
+
+//            注册
+            $("#registerForm").validate({
+                rules:{
+                    register:{
+                        required:true
+                    },
+                    registerPwd:{
+                        required:true,
+                        rangelength:[6,16],
+                        checkSpace:true
+                    },
+                    verify:{
+                        required:true
+                    }
+                },
+                messages:{
+                    register:{
+                        required:'请输入正确的邮箱或手机号'
+                    },
+                    registerPwd:{
+                        required:'请输入6-16位密码，区分大小写，不能使用空格！',
+                        rangelength:'请输入6-16位密码，区分大小写，不能使用空格！',
+                        checkSpace:'密码不能包含空格'
+                    },
+                    verify:{
+                        required:'请输入验证码'
+                    }
+                }
+            });
+        })
+
+        //        空格验证
+        $.validator.addMethod("checkSpace",function(value,element){
+            var checkSpace=/(^\s+)|(\s+$)/g;
+            return (!checkSpace.test(value));
+        },"密码不能包含空格");
+
+    </script>
+
+    <!--轮播-->
+    <script>
+        $(function(){
+//            容器
+            var banner=$(".bannerContent");
+//            prev
+            var prev=$(".prev");
+//            next
+            var next=$(".next");
+//            a标签
+            var a=$(".bannerContent a");
+//            a数量
+            var size=$(".bannerContent a").size();
+//            clone
+            var clone=$(".bannerContent a").first().clone();
+            banner.append(clone);
+
+//            生成圆点
+            for(var j=0;j<size;j++){
+                $(".banner-circle").append("<span></span>");
+            };
+
+//            圆点
+            var btn=$(".banner-circle span");
+            btn.first().addClass("on");
+
+//            隐藏箭头
+            prev.add(next).hide();
+
+            var i=0;
+
+//            鼠标滑过圆点
+            btn.hover(function(){
+                var index=$(this).index();
+                i=index;
+                show();
+                $(this).addClass("on").siblings().removeClass("on");
+            });
+
+//            上一个
+            prev.click(function(){
+                i--;
+                show();
+            });
+
+//            下一个
+            next.click(function(){
+                i++;
+                show();
+            });
+
+//            显示
+            function show(){
+//                next
+                if(i==size){
+                    i=0;
+                };
+
+//                prev
+                if(i==-1){
+                    i=size-1;
+                };
+
+                a.eq(i).siblings().find("div").fadeOut(1000);
+                a.eq(i).find("div").fadeIn(1000);
+
+                if(i==size-1){
+                    btn.eq(0).addClass("on").siblings().removeClass("on");
+                };
+                btn.eq(i).addClass("on").siblings().removeClass("on");
+            };
+
+//            自动轮播
+            var timer=setInterval(function(){
+                i++;
+                show();
+            },2000);
+
+//            hover
+            banner.add(prev).add(next).add(btn).hover(function(){
+                clearInterval(timer);
+//                显示箭头
+                prev.add(next).show();
+            },function(){
+                timer=setInterval(function(){
+                    i++;
+                    show();
+                },2000);
+                prev.add(next).hide();
+            });
+
+
+
+
+        });
+    </script>
+
+
+</head>
+<body>
+<!--头部-->
+    <header>
+        <div class="page-container">
+            <!--Logo-->
+            <div class="logo">
+                <a href="#">
+                    <img src="{% static 'img/Index/logo.png' %}">
+                </a>
+            </div>
+            <!--Nav-Left-->
+            <div class="nav-left">
+                <li>
+                    <a href="#">实战</a>
+                </li>
+                <li>
+                    <a href="#">路径</a>
+                </li>
+                <li>
+                    <a href="#">猿问</a>
+                </li>
+                <li>
+                    <a href="#">手记</a>
+                </li>
+            </div>
+            <!--Logined-->
+            <div class="login-area">
+                <ul class="logined">
+                    <li>
+                        <a href="#">
+                            <span class="fa fa-mobile"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="fa fa-bell"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="fa fa-envelope"></span>
+                        </a>
+                    </li>
+
+                    {% if account %}
+                        <li>
+                            <a href="{% url 'account_info' %}" onclick="js_method()" target="_blank">
+                                <img src="{% static 'img/Index/login.jpg' %}" class="LoginImg" alt="Account"/>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="javascript:void(0);" onclick="js_method()" name="loginLink">登录</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="js_method()" name="registerLink">注册</a>
+                        </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+            <!--search-->
+            <div class="search">
+                <div class="search-area">
+                    <form action="#" method="get">
+                        <input type="text">
+                        <a href=""><i class="fa fa-search"></i></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+<!--BK-->
+    <div class="bk"></div>
+<!--Banner-->
+    <div class="banner">
+        <!--nav-->
+        <div class="menuwrap"></div>
+
+        <!--menuItem-->
+
+        <!--Item1——前端开发-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox1.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <span class="smallTitle bold">基础:</span>
+                    <a href="#">HTML/CSS</a>
+                    <span class="line">/</span>
+                    <a href="#">JavaScript</a>
+                    <span class="line">/</span>
+                    <a href="#">jQuery</a>
+                    <br/>
+                    <br/>
+                    <div class="smallTitle bold">进阶:</div>
+                    <a href="#">Html5</a>
+                    <span class="line">/</span>
+                    <a href="#">CSS3</a>
+                    <span class="line">/</span>
+                    <a href="#">HTML/CSS</a>
+                    <span class="line">/</span>
+                    <a href="#">Node.js</a>
+                    <span class="line">/</span>
+                    <a href="#">AngularJS</a>
+                    <span class="line">/</span>
+                    <a href="#">Bootstrap</a>
+                    <span class="line">/</span>
+                    <a href="#">React</a>
+                    <span class="line">/</span>
+                    <a href="#">Sass/Less</a>
+                    <span class="line">/</span>
+                    <a href="#">Vue.js</a>
+                    <span class="line">/</span>
+                    <a href="#">WebApp</a>
+                    <br/>
+                    <br>
+                    <span class="smallTitle bold">其它:</span>
+                    <a href="#">前端工具</a>
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | JS+CSS3实现带预览图幻灯片效果</a></p>
+                    <p><a href="#">课程 | CSS3实现漂亮ToolTips效果</a></p>
+                    <p><a href="#">课程 | 信息列表制作</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item2——后端开发-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox2.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">PHP</a>
+                    <span class="line">/</span>
+                    <a href="#">Java</a>
+                    <span class="line">/</span>
+                    <a href="#">Python</a>
+                    <span class="line">/</span>
+                    <a href="#">C</a>
+                    <span class="line">/</span>
+                    <a href="#">C++</a>
+                    <span class="line">/</span>
+                    <a href="#">GO</a>
+                    <span class="line">/</span>
+                    <a href="#">C#</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | Python-面向对象</a></p>
+                    <p><a href="#">课程 | JAVA生成二维码</a></p>
+                    <p><a href="#">课程 | 如何使用高德云图在线制作属于你的地图</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item3——移动开发-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox3.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">Android</a>
+                    <span class="line">/</span>
+                    <a href="#">iOS</a>
+                    <span class="line">/</span>
+                    <a href="#">Unity 3D</a>
+                    <span class="line">/</span>
+                    <a href="#">Cocos2d-x</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | Swift Weather APP</a></p>
+                    <p><a href="#">课程 | 千变万化的ViewPager切换动画</a></p>
+                    <p><a href="#">课程 | Unity 3D地形编辑器</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item4——数据库-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox4.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">MySQL</a>
+                    <span class="line">/</span>
+                    <a href="#">MongoDB</a>
+                    <span class="line">/</span>
+                    <a href="#">Oracle</a>
+                    <span class="line">/</span>
+                    <a href="#">SQL Server</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | PHP环境LAMP/LNMP安装与配置</a></p>
+                    <p><a href="#">课程 | 轻松学会Laravel-高级篇</a></p>
+                    <p><a href="#">课程 | Oracle数据库开发利器之函数</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item5——云计算&大数据-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox5.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">大数据</a>
+                    <span class="line">/</span>
+                    <a href="#">云计算</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | openstack最新技术解析</a></p>
+                    <p><a href="#">课程 | R语言之数据可视化</a></p>
+                    <p><a href="#">课程 | 云计算 - 引领阿里生态的技术发展之路</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item6——运维&测试-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox6.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">测试</a>
+                    <span class="line">/</span>
+                    <a href="#">Linux</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | Android App专项测试-压力测试篇</a></p>
+                    <p><a href="#">课程 | Linux权限管理之特殊权限</a></p>
+                    <p><a href="#">课程 | shell编程之正则表达式</a></p>
+                </div>
+            </div>
+        </div>
+        <!--Item7——视觉设计-->
+        <div class="submenu">
+            <div class="innerBox" style="background: url({% static 'img/Index/innerBox7.png' %});">
+                <!--subinner-->
+                <div class="subinnerBox">
+                    <div class="title">分类目录</div>
+                    <a href="#">Photoshop</a>
+                    <span class="line">/</span>
+                    <a href="#">Maya</a>
+                    <span class="line">/</span>
+                    <a href="#">Premiere</a>
+                    <span class="line">/</span>
+                    <a href="#">ZBrush</a>
+                    <span class="line">/</span>
+                    <!------------------------------------->
+                    <div class="recommend title">推荐</div>
+                    <p><a href="#">课程 | Oeasy教你玩转后期剪辑Premiere</a></p>
+                    <p><a href="#">课程 | Pscc全面技能培训</a></p>
+                    <p><a href="#">课程 | Premiere魔术——图片变电影</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!--menuContent-->
+        <div class="menuContent">
+            <!--前端开发-->
+            <div class="item">
+                <span class="group">
+                    前端开发
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <!--后端开发-->
+            <div class="item">
+                <span class="group">
+                    后端开发
+                    <i class="fa fa-angle-right"></i>
+                    </span>
+            </div>
+            <!--移动开发-->
+            <div class="item">
+                <span class="group">
+                    移动开发
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <!--数据库-->
+            <div class="item">
+                <span class="group">
+                    数据库
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <!--云计算&大数据-->
+            <div class="item">
+                <span class="group">
+                    云计算&大数据
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <!--运维&测试-->
+            <div class="item">
+                <span class="group">
+                    运维&测试
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+            <!--视觉设计-->
+            <div class="item">
+                <span class="group">
+                    视觉设计
+                    <i class="fa fa-angle-right"></i>
+                </span>
+            </div>
+
+        </div>
+
+        <!--bannerContent-->
+        <div class="bannerContent">
+            <!--banner1-->
+            <a href="">
+                <div class="banner-slide banner1">
+                </div>
+            </a>
+            <!--banner2-->
+            <a href="">
+                <div class="banner-slide  banner2">
+                </div>
+            </a>
+            <!--banner3-->
+            <a href="">
+                <div class="banner-slide  banner3">
+                </div>
+            </a>
+            <!--banner4-->
+            <a href="">
+                <div class="banner-slide  banner4">
+                </div>
+            </a>
+            <!--banner5-->
+            <a href="">
+                <div class="banner-slide  banner5">
+                </div>
+            </a>
+        </div>
+
+        <!--banner-pn-->
+        <div class="banner-circle">
+            <!--<span></span>-->
+            <!--<span></span>-->
+            <!--<span></span>-->
+            <!--<span></span>-->
+            <!--<span></span>-->
+        </div>
+        <!--prev/next-->
+        <a class="prev"></a>
+        <a class="next"></a>
+    </div>
+<!--实战推荐-->
+    <div class="outwrap-recomend">
+        <!--容器-->
+        <div class="contentwrap">
+            <!--推荐-->
+            <div class="recomend">
+                实战推荐
+                <a href="{% url 'fight:index' %}" target="_blank">
+                    <span>更多</span>
+                </a>
+            </div>
+            <!--推荐内容-->
+            <!--课程清单-->
+            <div class="recomendContent course-list">
+
+                {% for fight in fight_list %}
+                    <div class="course-wrap">
+                    <a href="{% url 'fight:detail' fight.id %}" target="_blank">
+                        <div class="course-box">
+                            <img src="{{ MEDIA_URL }}{{ fight.image }}" class="img-responsive" alt="{{ fight.name }}"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>{{ fight.get_degree_display }}</i>
+                                    {{ fight.name }}
+                                </h3>
+                                <p>{{ fight.abstract }}</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>{{ fight.students }}人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<!--课程推荐-->
+    <div class="outwrap-course">
+    <!--容器-->
+    <div class="contentwrap">
+        <!--推荐-->
+        <div class="recomend">
+            免费好课
+            <a href="#">
+                <span>更多</span>
+            </a>
+        </div>
+        <!--推荐内容-->
+        <!--课程清单-->
+        <div class="recomendContent course-list">
+            <!--进击Node.js基础（一）-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Course/进击Node.js基础（一）.jpg' %}" class="img-responsive" alt="进击Node.js基础（一）"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                进击Node.js基础（一）
+                            </h3>
+                            <p>“键盘侠”带你揭开Node.js的面纱。</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--进击Node.js基础（二）-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="img/Course/进击Node.js基础（二）.jpg" class="img-responsive" alt="进击Node.js基础（二）"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                进击Node.js基础（二）
+                            </h3>
+                            <p>"键盘侠"带你继续攻破 Nodejs !</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>53180人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--node+mongodb 建站攻略（一期）-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="img/Course/node+mongodb建站攻略（一期）.jpg" class="img-responsive" alt="node+mongodb 建站攻略（一期）"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                node+mongodb 建站攻略（一期）
+                            </h3>
+                            <p>初中级前端开发工程师必学课程！</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>18674人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--mongoDB入门篇-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="img/Course/mongoDB入门篇.jpg" class="img-responsive" alt="mongoDB入门篇"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>初</i>
+                                mongoDB入门篇
+                            </h3>
+                            <p>慕课网带你进入mongoDB的神秘世界。</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>29453人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--React入门-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="img/Course/React入门.jpg" class="img-responsive" alt="React入门"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                React入门
+                            </h3>
+                            <p>颠覆式前端UI开发框架React基础知识</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>17231人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--课程内容-->
+    <div class="outwrap-content">
+        <!--Web-->
+        <div class="contentwrap web">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    Web
+                    <br/>
+                    前端工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+                <div class="raise-weapon">
+                    <a href="#">Web前端工程师成长第一阶段(基础篇)</a>
+                    <a href="">响应式布局那些事</a>
+                    <a href="">教你HTML5开发爱心鱼游戏</a>
+                </div>
+            </div>
+            <!--center-->
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/HTML5移动WebApp阅读器.jpg' %})">
+                    <p>HTML5 移动Web App阅读器</p>
+                </div>
+            </a>
+            <!--right-->
+            <div class="heigher">
+                <div class="course-wrap">
+                    <a href="#">
+                        <div class="course-box">
+                            <img src="{% static 'img/Index/JS实现“旋转木马”幻灯片效果.jpg' %}" class="img-responsive" alt="JS实现“旋转木马”幻灯片效果"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>中</i>
+                                    JS实现“旋转木马”幻灯片效果
+                                </h3>
+                                <p> JS 组件封装，加入我们一起学习！</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>129413人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="list">
+                        <a href="">
+                            <p>按钮特效</p>
+                        </a>
+                        <a href="">
+                            <p>jQuery实现自定义滚动条</p>
+                        </a>
+                        <a href="">
+                            <p>去哪儿前端沙龙分享第三期</p>
+                        </a>
+                        <a href="">
+                            <p>阿里D2前端技术论坛——2015融合</p>
+                        </a>
+                        <a href="">
+                            <p>带你学习Jade模板引擎</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                炫丽的倒计时效果Canvas绘图与动画基础
+                            </h3>
+                            <p>学习HTML5中最激动人心的技术Canvas</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/教你HTML5开发爱心鱼游戏.jpg' %})">
+                    <p>教你HTML5开发爱心鱼游戏</p>
+                </div>
+            </a>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                AC2015前端技术大会
+                            </h3>
+                            <p> 腾讯AlloyTeam2015前端技术收获分享</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--Java-->
+        <div class="contentwrap java">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    Java
+                    <br/>
+                    工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+                <div class="raise-weapon">
+                    <a href="#">模式宗师养成宝典之Java版</a>
+                    <a href="">搞定Java加解密</a>
+                    <a href="">Hibernate开发宝典</a>
+                </div>
+            </div>
+            <!--center-->
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/全面攻克JavaSSM整合开发的阵地.jpg' %})">
+                    <p>全面攻克Java SSM整合开发的阵地！</p>
+                </div>
+            </a>
+            <!--right-->
+            <div class="heigher">
+                <div class="course-wrap">
+                    <a href="#">
+                        <div class="course-box">
+                            <img src="{% static 'img/Index/JS实现“旋转木马”幻灯片效果.jpg' %}" class="img-responsive" alt="JS实现“旋转木马”幻灯片效果"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>高</i>
+                                    通过自动回复机器人学Mybatis---基础版
+                                </h3>
+                                <p>  微信公众号自动回复功能学习 Mybatis</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>129413人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="list">
+                        <a href="">
+                            <p>JUnit—Java单元测试必备工具</p>
+                        </a>
+                        <a href="">
+                            <p>初识Java微信公众号开发</p>
+                        </a>
+                        <a href="">
+                            <p>JDBC之“对岸的女孩走过来”</p>
+                        </a>
+                        <a href="">
+                            <p>Java高并发秒杀API之业务分析与DAO层</p>
+                        </a>
+                        <a href="">
+                            <p>Java高并发秒杀API之Service层</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                模式的秘密---适配器模式
+                            </h3>
+                            <p>适配器教你如何“到什么山唱什么歌” </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                Java眼中的XML ---文件写入
+                            </h3>
+                            <p> 举例说明JAVA程序如何生成XML文档 </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                JAVA实现非对称加密
+                            </h3>
+                            <p> 非对称加密算法在JAVA中的实现。 </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--PHP-->
+        <div class="contentwrap php">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    PHP
+                    <br/>
+                    工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+                <div class="raise-weapon">
+                    <a href="#">从零开始学习ThinkPHP框架</a>
+                    <a href=""> PHP微信公众平台开发攻略</a>
+                    <a href=""> 带你玩转Yii框架</a>
+                </div>
+            </div>
+            <!--center-->
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/PHP微信公众平台开发攻略.jpg' %})">
+                    <p>PHP微信公众平台开发攻略</p>
+                </div>
+            </a>
+            <!--right-->
+            <div class="heigher">
+                <div class="course-wrap">
+                    <a href="#">
+                        <div class="course-box">
+                            <img src="{% static 'img/Index/JS实现“旋转木马”幻灯片效果.jpg' %}" class="img-responsive" alt="JS实现“旋转木马”幻灯片效果"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>中</i>
+                                    WEB在线文件管理器
+                                </h3>
+                                <p>    教你掌握文件、目录函数库的应用</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>129413人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="list">
+                        <a href="">
+                            <p>大话PHP设计模式</p>
+                        </a>
+                        <a href="">
+                            <p>PHP微信公众平台开发高级篇—网页授权接口</p>
+                        </a>
+                        <a href="">
+                            <p>PHP第三方登录—微博登录</p>
+                        </a>
+                        <a href="">
+                            <p>从零开始打造自己的PHP框架</p>
+                        </a>
+                        <a href="">
+                            <p>大型PHP电商网站商品秒杀功能实现思路分析</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                揭秘PHP模糊查询技术
+                            </h3>
+                            <p>PHP模糊查询分析与实现！ </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                在Ubuntu Server下搭建LAMP环境
+                            </h3>
+                            <p>打仗不能不带枪，想学PHP不能不会搭建LAMP环境   </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--Android-->
+        <div class="contentwrap android">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    Android
+                    <br/>
+                    工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+                <div class="raise-weapon">
+                    <a href="#">Android加薪利器--自定义View</a>
+                    <a href="">Android加薪利器——断点续传</a>
+                    <a href="">小慕感恩计划-实战Hot!!!</a>
+                </div>
+            </div>
+            <!--center-->
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/高德开发者必学AndroidSDK篇.jpg' %})">
+                    <p>高德开发者必学—Android SDK篇</p>
+                </div>
+            </a>
+            <!--right-->
+            <div class="heigher">
+                <div class="course-wrap">
+                    <a href="#">
+                        <div class="course-box">
+                            <img src="{% static 'img/Index/JS实现“旋转木马”幻灯片效果.jpg' %}" class="img-responsive" alt="JS实现“旋转木马”幻灯片效果"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>高</i>
+                                    Android智能机器人“小慕”的实现
+                                </h3>
+                                <p>   无聊的时候就来作个机器人陪你聊天吧</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>129413人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="list">
+                        <a href="">
+                            <p>Android-仿微信语音聊天</p>
+                        </a>
+                        <a href="">
+                            <p>Android-深入Activity</p>
+                        </a>
+                        <a href="">
+                            <p>Android-仿微信图片选择器</p>
+                        </a>
+                        <a href="">
+                            <p>Android动感系列-扫一扫</p>
+                        </a>
+                        <a href="">
+                            <p>Android的各种Drawable讲解</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                Android面试常客Handler详解
+                            </h3>
+                            <p>学Android开发，必学Handler </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                微信6.0主界面
+                            </h3>
+                            <p> 也是微信5.2.1主界面的后续课程  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                Android图像处理-打造美图秀秀从它开始
+                            </h3>
+                            <p>图像色彩的分析与处理  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--IOS-->
+        <div class="contentwrap ios">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    iOS
+                    <br/>
+                    工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+                <div class="raise-weapon">
+                    <a href="#">Swift加薪利器-iOS动画特辑</a>
+                    <a href="">iOS苹果表开发攻略</a>
+                </div>
+            </div>
+            <!--center-->
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/iOS基础教程-数据解析.jpg' %})">
+                    <p>iOS基础教程-数据解析</p>
+                </div>
+            </a>
+            <!--right-->
+            <div class="heigher">
+                <div class="course-wrap">
+                    <a href="#">
+                        <div class="course-box">
+                            <img src="{% static 'img/Index/JS实现“旋转木马”幻灯片效果.jpg' %}" class="img-responsive" alt="JS实现“旋转木马”幻灯片效果"/>
+                            <div class="course-info">
+                                <h3>
+                                    <i>初</i>
+                                    征战Objective-C
+                                </h3>
+                                <p>  IOS开发可以从这里开始</p>
+                            </div>
+                            <div class="course-stu">
+                                <span>129413人在学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="list">
+                        <a href="">
+                            <p>iOS-健康App系列之脂肪你去哪儿</p>
+                        </a>
+                        <a href="">
+                            <p>中国首届swift开发者大会</p>
+                        </a>
+                        <a href="">
+                            <p>iOS基础教程-SQLite数据库操作</p>
+                        </a>
+                        <a href="">
+                            <p>2小时搞定移动直播 App 开发</p>
+                        </a>
+                        <a href="">
+                            <p>iOS基础之UIImageView知识拓展(下)</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                肾六的分分合合
+                            </h3>
+                            <p>准备进入手术室摘除肾6 </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/详解iOS直播间礼品发送功能.jpg' %})">
+                    <p>详解iOS直播间礼品发送功能</p>
+                </div>
+            </a>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                iOS-动画进阶
+                            </h3>
+                            <p> iOS动画特效进阶篇 </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--Linux-->
+        <div class="contentwrap linux">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    Linux
+                    <br/>
+                    运维工程师
+                </p>
+                <a class="career-path">
+                    职业路径
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                Linux中的计划任务—Crontab
+                            </h3>
+                            <p>Crontab带你从定时重复工作中解脱  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                Linux软件安装管理
+                            </h3>
+                            <p> 使用rpm和yum命令安装Linux软件！  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/炫丽的倒计时效果Canvas绘图与动画基础.jpg' %}" class="img-responsive" alt="炫丽的倒计时效果Canvas绘图与动画基础"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>高</i>
+                                Linux Bind负载均衡
+                            </h3>
+                            <p>DNS转发、主从模式及传输限制。  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="{% static 'img/Index/AC2015前端技术大会.jpg' %}" class="img-responsive" alt="AC2015前端技术大会"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                PHP环境LAMP/LNMP安装与配置
+                            </h3>
+                            <p> LAMP/LNMP环境安装配置  </p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+        <!--手记-->
+        <div class="contentwrap note">
+            <!--left-->
+            <div class="classify">
+                <!--路径-->
+                <p class="title">
+                    手记&猿问
+                </p>
+                <p>IT知识和答疑，想要的都在这</p>
+                <a>
+                    <div  class="link-btn">
+                        手记
+                    </div>
+                </a>
+                <a>
+                    <div class="link-btn">
+                        猿问
+                    </div>
+                </a>
+                <a>
+                    <div class="link-btn">
+                        积分商城
+                    </div>
+                </a>
+
+            </div>
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/电商想挣你的钱，慕课网给你挣钱的本事！.jpg' %})">
+                    <p>电商想挣你的钱，慕课网给你挣钱的本事！</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="longer" style="background: url({% static 'img/Index/Servlet程序运行成功，却出现乱码.jpg' %})">
+                    <p>Servlet程序运行成功，却出现乱码？</p>
+                </div>
+            </a>
+            <div class="longer">
+                <div class="left">热门手记</div>
+                <div class="right">
+                    <a href="">
+                        <p>
+                            Java第三季 简易扑克牌游戏
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            仿美团app产品列表，用weui写成
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            为什么要使用SLF4J而不是Log4J
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            接口的实现（interface）
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="longer">
+                <div class="left">猿问推荐</div>
+                <div class="right">
+                    <a href="">
+                        <p>
+                            数组的目的是干什么？
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            !DOCTYPE 文档有哪些属性，作用是？
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            python中的list怎样打印中文汉字？
+                        </p>
+                    </a>
+                    <a href="">
+                        <p>
+                            子类继承父类方法怎么重写？
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="clear"></div>
+
+        </div>
+    </div>
+<!--登录弹出层-->
+    <div id="signin" class="sign">
+    <!--头部-->
+    <div class="sign-header">
+        <h1>
+            <span class="active">登录</span>
+            <span>注册</span>
+        </h1>
+        <button type="button" class="fa fa-close"></button>
+    </div>
+    <!--登录-->
+    <div class="sign-body">
+        <!--登录-->
+        <form action="{% url 'login:imc_login' %}" method="post" id="signForm">
+            <!--登录-->
+            <div class="group">
+                <input type="text" name="login" class="form-control" placeholder="请输入登录邮箱/手机号">
+            </div>
+            <div class="group">
+                <input type="password" name="pwd" class="form-control" placeholder="6-16位密码，区分大小写，不能用空格">
+            </div>
+
+            <div class="loginError">
+                <p>
+                </p>
+            </div>
+
+            <div class="group auto-signin">
+                <label for="auto-signin">
+                    <input type="checkbox" id="auto-signin" checked="checked"/>
+                    下次自动登录
+                </label>
+                <a href="#">忘记密码</a>
+            </div>
+            <div class="sub-group">
+                <input type="submit" value="登录" id="login_btn">
+            </div>
+            {% csrf_token %}
+        </form>
+        <!--注册-->
+        <form action="" method="post" id="registerForm">
+            <div class="group">
+                <input type="text" name="register" class="form-control" placeholder="请输入注册邮箱/手机号">
+            </div>
+            <div class="group">
+                <input style="display: block!important;" type="password" name="registerPwd" class="form-control" placeholder="6-16位密码，区分大小写，不能用空格">
+            </div>
+            <div class="group">
+{#                <input type="text" name="verify" class="" placeholder="请输入验证码">#}
+{#                <a href="#"></a>#}
+                {{ captcha_form.captcha }}
+                <a href="#"><i class="fa fa-refresh"></i></a>
+            </div>
+            <div class="sub-group">
+                <input type="submit" id="register_btn" value="注册">
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+    <!--其他方式-->
+    <div class="sign-footer">
+        <div class="sign-other">
+            <span>其他方式登录</span>
+            <a href="#"><i class="fa fa-qq"></i></a>
+            <a href="#"><i class="fa fa-weixin"></i></a>
+            <a href="#"><i class="fa fa-weibo"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        var register_btn=$("#register_btn");
+        var login_btn=$("#login_btn");
+        register_btn.on("click",function () {
+            $.ajax({
+                cache:false,
+                type:'post',
+                dataType:'json',
+                url:"/register/",
+                data:$('#registerForm').serialize(),
+                async:true,
+                success:function (data) {
+                    if(data.status=='success'){
+                        alert('OK');
+                    }else if(data.status=='fail'){
+                        alert('NO');
+                    }
+                }
+            })
+        });
+
+{#        login_btn.on("click",function () {#}
+{#            $.ajax({#}
+{#                cache:false,#}
+{#                type:'post',#}
+{#                dataType:'json',#}
+{#                url:"/login/imc/",#}
+{#                data:$('#signForm').serialize(),#}
+{#                async:true,#}
+{#                success:function (data) {#}
+{#                    if(data.status=='fail'){#}
+{#                        alert(data.msg);#}
+{#                    }#}
+{#                    if(data.status=='success'){#}
+{#                        alert('in');#}
+{#                    }#}
+{#                    window.location.href='http://www.imooc.com/u/2769304/szcourses/list'#}
+{#                }#}
+{#            })#}
+{#        })#}
+    });
+</script>
+
+</body>
+</html>

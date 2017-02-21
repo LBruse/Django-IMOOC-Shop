@@ -1,0 +1,52 @@
+/*遮罩层*/
+#mask{
+    background-color: #000000;
+    opacity: 0.75;
+    filter:alpha(opacity=75);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:9999 ;
+}
+/*弹出*/
+.moco-modal{
+    position: fixed;
+    background-color: #ffffff;
+    left: 40%;
+    top: 25%;
+    box-sizing: border-box;
+    width: 320px;
+    padding: 1.5rem;
+    z-index: 10000;
+    border: 1px solid grey;
+    border-radius: 0.5rem;
+    box-shadow: 8px 0 16px 0 rgba(7,17,27,0.2);
+}
+.moco-modal-wrap p{
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #07111b;
+    line-height: 2rem;
+}
+
+.moco-modal-wrap .moco-modal-btns{
+    margin-top: 1.5rem;
+    text-align: right;
+}
+
+.moco-modal-wrap .moco-modal-btns a{
+    display: inline-block;
+    margin-left: 1rem;
+    width: 6rem;
+    color: #ffffff;
+    background-color: #08c;
+    border-color: #08c;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 200;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+}

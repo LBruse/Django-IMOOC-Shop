@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../../icon/font-awesome-4.6.3/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/Common.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/FightItem/ItemsCommon.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/FightItem/Response.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/FightItem/Video.css">
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/Common.js"></script>
+    <script src="../../../js/FightItem/Video.js"></script>
+
+    <!--CSS-->
+    <style>
+        /*购买*/
+        .cart{
+            background: url("../../../img/Fight/PythonSenior/bg.jpg") no-repeat center center;
+        }
+
+        /*视频介绍*/
+        .videoInfo{
+            background: url("../../../img/Fight/PythonSenior/video.jpg");
+
+        }
+
+        /*内容2*/
+        .container-2{
+            text-align: center;
+            height: 360px;
+            background: url("../../../img/Fight/PythonSenior/3.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        /*title*/
+        .container-2 h2{
+            margin-top: 10rem;
+            font-size: 5rem;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+        }
+
+        .container-2 p{
+            font-size: 2rem;
+            width: 65%;
+            margin: 2rem auto;
+            line-height: 2.5rem;
+        }
+
+    </style>
+
+    <!--Response-->
+    <style>
+        /*Phone*/
+        @media only screen and (max-width: 30em){
+            /*视频简介*/
+            .videoInfo{
+                height: 30rem;
+            }
+
+            /*课程名称*/
+            .videoInfo h3{
+                font-size: 3rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            /*课程简介*/
+            .videoInfo p{
+                display: none;
+            }
+
+            /*播放按钮*/
+            .videoInfo i{
+                margin-top: 8rem;
+            }
+
+            /*container-2*/
+            .container-2 h2{
+                margin-top: 2rem;
+                font-size: 3rem!important;
+                padding: 1rem;
+            }
+
+            .container-2 p{
+                font-size: 1.5rem;
+                line-height: 3rem;
+            }
+        }
+
+        /*Pad*/
+        @media only screen and (max-width: 50em) {
+            .cart{
+                background: url("../../../img/Fight/PythonSenior/bg_fuzzy.jpg") no-repeat center center;
+            }
+
+            /*视频简介*/
+            .videoInfo h3{
+                padding-top: 3rem;
+            }
+
+            .videoInfo p{
+                max-width: 90%;
+                margin: 2rem auto;
+            }
+
+            /*container-2*/
+            .container-2{
+                height: auto;
+            }
+
+            .container-2 h2{
+                margin-top: 3.5rem;
+                font-size: 3.5rem;
+            }
+
+            /*段落*/
+            .container-2 p{
+                width: 80%;
+            }
+
+        }
+    </style>
+
+    <!--jQuery-->
+    <script>
+        $(function(){
+            courseHover();
+
+        })
+
+    </script>
+</head>
+<body>
+<!--购买-->
+    <div class="row cart">
+        <!--隐藏课程名称-->
+        <div class="hide">
+            <h1>Python高级编程技巧实战</h1>
+        </div>
+        <!--细节-->
+        <div class="littlemsg">
+            <!--难度-->
+            <div class="itemDetail">
+                <span>难度</span>
+                <span><strong>中级</strong></span>
+            </div>
+            <!--时长-->
+            <div class="itemDetail">
+                <span>时长</span>
+                <span><strong>8小时20分钟</strong></span>
+            </div>
+            <!--学习人数-->
+            <div class="itemDetail">
+                <span>学习人数</span>
+                <span><strong>428</strong></span>
+            </div>
+            <!--评分-->
+            <div class="itemDetail">
+                <span>10分</span>
+                <span>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+            </div>
+
+        </div>
+        <!--价格-->
+        <div class="price">
+            <span>￥<b>168.00</b></span>
+        </div>
+        <!--立即购买-->
+        <div class="buyNow">
+            <form action="#" method="post">
+                <div>
+                    <!--记录购买-->
+                    <input type="submit" class="btn" value="立即购买">
+                    <!--添加到购物车-->
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+<!--课程信息-->
+    <!--导航-->
+    <div class="row navInfo">
+        <div>
+            <ul>
+                <li><a href="">课程介绍</a></li>
+                <li><a href="">课程章节</a></li>
+                <li><a href="">用户评价<span>4</span></a></li>
+                <li><a href="">常见问题</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--视频-->
+    <div class="row videoInfo">
+        <!--课程名称-->
+        <h3>Python高级编程技巧实战</h3>
+        <!--简介-->
+        <p>
+            精选50个Python项目实战与面试容易遇到的问题作为训练任务，每个任务都先提出问题，分析问题、然后给出巧妙与高效的解决办法，最后手把手代码实战完成任务，带你全面提升python项目实战核心技能与高效编程技巧
+        </p>
+        <!--视频播放-->
+        <i class="fa fa-play-circle"></i>
+    </div>
+<!--视频播放-->
+    <div id="videoPlay">
+        <video id="video" controls>
+            <source src="../../../video/Python高级编程技巧实战.mp4" type="video/mp4">
+            <object data="../../../video/Python高级编程技巧实战.mp4" width="320" height="240">
+                <embed src="../../../video/Python高级编程技巧实战.mp4" width="320" height="240">
+            </object>
+
+        </video>
+        <div>
+            <i class="fa fa-close"></i>
+        </div>
+    </div>
+    <!--课程内容2-->
+    <div class="row container-2">
+        <h2>适合人群及技术储备要求</h2>
+
+        <p>
+            适合具有一定自学能力，有一定Python基础，但缺乏解决实际问题能力和技巧的Python初学者,同时，也适合正在使用Python，想提高开发技巧，开阔解决实际问题思路的中高级工程师
+        </p>
+    </div>
+    <!--课前必学-->
+    <div class="info-recommendcourse">
+        <h3>课前必学</h3>
+        <!--课程清单-->
+        <div class="course-list">
+            <!--Python开发环境搭建-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="../../../img/Course/Python开发环境搭建.jpg" class="img-responsive" alt="Python开发环境搭建"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>初</i>
+                                Python开发环境搭建
+                            </h3>
+                            <p>带你搭建 Python 开发环境</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>129413人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--Python入门-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="../../../img/Course/Python入门.jpg" class="img-responsive" alt="Python入门"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>初</i>
+                                Python入门
+                            </h3>
+                            <p>未来您要会的优雅、明确、简单语言</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>53180人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--python正则表达式-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="../../../img/Course/python正则表达式.jpg" class="img-responsive" alt="python正则表达式"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                python正则表达式
+                            </h3>
+                            <p>如何使用正则处理文本</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>18674人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!--Python错误和异常-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="../../../img/Course/Python错误和异常.jpg" class="img-responsive" alt="Python错误和异常"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>中</i>
+                                Python错误和异常
+                            </h3>
+                            <p>Python 错误和异常处理!</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>29453人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!--Python-面向对象-->
+            <div class="course-wrap">
+                <a href="#">
+                    <div class="course-box">
+                        <img src="../../../img/Course/Python-面向对象.jpg" class="img-responsive" alt="Python-面向对象"/>
+                        <div class="course-info">
+                            <h3>
+                                <i>初</i>
+                                Python-面向对象
+                            </h3>
+                            <p>带你领略Python的魅力</p>
+                        </div>
+                        <div class="course-stu">
+                            <span>29453人在学</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/Common.css">
+    <style>
+        header{
+            width: 100%;
+            background-color: #51B7EC;
+            color: #ffffff;
+        }
+
+        header h3{
+            float: left;
+            margin-top: 5px;
+            margin-left: 25%;
+        }
+
+        header ul{
+            margin-right: 20%;
+        }
+
+        header li{
+            float: right;
+            margin-top: 1em;
+            margin-right: 5px;
+            line-height: 1em;
+            height: 1em;
+        }
+
+        header li a{
+            color: #ffffff;
+        }
+
+        header li a:hover{
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        header .logo img{
+            max-width: 13%;
+            max-height: 13%;
+            float: left;
+
+        }
+
+        .left{
+            width: 50%;
+            margin-left: 20%;
+            margin-top: 5%;
+            float: left;
+        }
+
+        .left h3{
+          margin-left: 35%;
+        }
+
+        .left p{
+            margin-top: 1em;
+            margin-left: 20%;
+            font-size: 18px;
+        }
+
+        .left a{
+            color: #6F98D4;
+        }
+
+        .left .back{
+            margin-left: 10%;
+            display: block;
+        }
+
+        .left ul{
+            margin-left: 20%;
+            clear: both;
+        }
+
+        .left li{
+            float: left;
+            margin-right: 0.3em;
+        }
+
+        .left span{
+            margin-left: 0.3em;
+        }
+
+        .left li a{
+            color: grey;
+        }
+
+        .left div img{
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .left div img:first-child{
+
+            float: left;
+            margin-left: 20%;
+        }
+
+        .left div img:last-child{
+
+            margin-left: 45%;
+        }
+
+        .left ul{
+            margin-top: 3%;
+        }
+
+        .right{
+            margin-top: 10%;
+            float: right;
+            margin-right: 2%;
+            width: 25%;
+        }
+
+        .right p{
+            border-top: 1px dotted grey;
+            line-height: 2em;
+        }
+
+        .right div:last-child{
+            margin-top: 10%;
+        }
+
+        @media only screen and (max-width: 30em) {
+
+            header{
+                display: none;
+            }
+
+            .left{
+                margin: 10% auto;
+                float: none;
+            }
+
+            header .logo{
+                display: none;
+            }
+
+            .left h3{
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .left p,
+            .left ul{
+                display: none;
+            }
+
+            .left img:first-child{
+                display: none;
+            }
+
+            .left img:last-child{
+               margin: 0 auto!important;
+            }
+
+            .right{
+                margin:10% auto ;
+                float: none;
+                width: 70%;
+            }
+
+
+
+        }
+
+        @media only screen and (max-width: 50em ) {
+            header ul{
+                margin-right: 5%!important;
+            }
+            .right{
+                clear: both;
+            }
+        }
+
+        @media only screen and (min-width: 30.0625em) and (max-width: 50em) {
+            header li{
+                margin-right: 2px;
+                font-size: 12px;
+            }
+
+            .left{
+                margin: 10% auto;
+                float: none;
+            }
+
+            .left ul{
+                margin-left: 0;
+            }
+
+            .left p{
+                font-size: small;
+            }
+
+            .left .back{
+                display: inline;
+            }
+
+            .left ul{
+                display: none;
+            }
+
+            .right{
+                margin: 0% auto;
+                float: none;
+                width: 70%;
+            }
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<header class="navbar-fixed-top">
+    <div class="logo">
+
+        <h3>
+            <img src="../../img/Login/QQ_Penguin_tencent_128px_500133_easyicon.net.png" alt="QQ头像">
+            QQ登录
+        </h3>
+    </div>
+
+    <ul>
+
+        <li><a href="">申请接入</a></li>
+
+        <li>
+            <a href="">授权管理</a>
+            <span>|</span>
+        </li>
+
+        <li>
+            <a href="">QQ登录</a>
+            <span>|</span>
+        </li>
+    </ul>
+</header>
+<div class="container row">
+    <div class="left col-sm-7">
+        <h3>快速登录</h3>
+        <p>使用<a href="">QQ手机版</a>扫描二维码,<span class="back">或点击头像授权登录。</span></p>
+        <div>
+            <img class="img-responsive" src="../../img/Login/二维码.png" alt="扫描二维码">
+            <img class="img-responsive" src="../../img/Login/二维码.png" alt="扫描二维码">
+        </div>
+        <ul>
+            <li>
+                <a href="">账号密码登录</a>
+                <span>|</span>
+            </li>
+
+            <li>
+                <a href="">注册新账号</a>
+                <span>|</span>
+            </li>
+
+            <li><a href="">意见反馈</a></li>
+        </ul>
+    </div>
+    <div class="right col-sm-3">
+
+        <p><a href="">慕课网</a>将获得以下权限:</p>
+
+        <form>
+            <p>
+                <input type="checkbox">全选
+            </p>
+
+            <p>
+                <input type="checkbox" checked="true" disabled="true">获得你的昵称、头像、性别
+            </p>
+        </form>
+        <div>
+            授权后表明你已同意<a href="">QQ登录服务协议</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/Common.css">
+    <style type="text/css">
+        body{
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        .container{
+            margin: 0 auto;
+        }
+
+        .container h3,
+        .container p{
+            text-align: center;
+        }
+
+        .container h3{
+            margin-top: 5%;
+        }
+
+        .container img{
+            display: block;
+            margin: 0 auto;
+            background-color: #ffffff;
+            width: 20%;
+            padding: 3px;
+            margin-top: 2%;
+            border-radius: 0px;
+        }
+
+        .container div{
+            background-color: #232323;
+            border-radius: 25px;
+            margin: 0 auto;
+            width: 25%;
+            margin-top: 2%;
+        }
+
+        .container div p{
+            margin: 5px;
+        }
+
+        .container div p:first-child{
+            padding-top: 5px;
+        }
+
+        /*小屏幕*/
+        @media only screen and (max-width: 30rem) {
+            p{
+                font-size: 12px;
+            }
+
+            .container img{
+                width: 30%!important;
+            }
+        }
+
+        /*中屏幕*/
+        @media only screen and (max-width: 50rem) {
+            h3{
+                font-size: 15px;
+            }
+
+            .container div{
+                background-color: #333333;
+                width: 30%;
+            }
+
+            .container p{
+                font-size: 12px;
+            }
+
+            .container img{
+                width: 30%;
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container row">
+    <h3>微信登录</h3>
+    <img class="thumbnail" src="../../img/Login/二维码.png" alt="微信二维码"/>
+
+    <div>
+        <p>请使用微信二维码扫描登录</p>
+        <p>"慕课网"</p>
+    </div>
+
+</div>
+</body>
+</html>

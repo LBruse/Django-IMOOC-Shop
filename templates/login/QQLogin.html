@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../css/Common.css">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/vendor/jquery.validate-1.13.1.js"></script>
+
+    <!--CSS-->
+    <style>
+        header{
+            width: 100%;
+            background-color: #51B7EC;
+            color: #ffffff;
+        }
+
+        header h3{
+            float: left;
+            margin-top: 5px;
+            margin-left: 25%;
+        }
+
+        header ul{
+            margin-right: 20%;
+        }
+
+        header li{
+            float: right;
+            margin-top: 1em;
+            margin-right: 5px;
+            line-height: 1em;
+            height: 1em;
+        }
+
+        header li a{
+            color: #ffffff;
+        }
+
+        header li a:hover{
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        header .logo img{
+            max-width: 13%;
+            max-height: 13%;
+            float: left;
+
+        }
+
+        .left{
+            width: 50%;
+            margin-left: 20%;
+            margin-top: 5%;
+            float: left;
+        }
+
+        .left h3{
+          margin-left: 35%;
+        }
+
+        .left p{
+            margin-top: 1em;
+            margin-left: 20%;
+            font-size: 18px;
+        }
+
+        /*登录*/
+        .left form{
+            width: 50%;
+            margin: 2rem auto;
+        }
+
+        .left input.btn-success{
+            width: 100%;
+            line-height: 2rem;
+            font-size: 2rem;
+            background-color: #86ce2f;
+            border-radius: 0;
+        }
+
+        .left a{
+            color: #6F98D4;
+        }
+
+        .left ul{
+            margin-top: 3%;
+            margin-left: 30%;
+            clear: both;
+        }
+
+        .left li{
+            float: left;
+            margin-right: 0.3em;
+        }
+
+        .left span{
+            margin-left: 0.3em;
+        }
+
+        .left li a{
+            color: grey;
+        }
+
+        .right{
+            margin-top: 10%;
+            float: right;
+            margin-right: 2%;
+            width: 25%;
+        }
+
+        .right p{
+            border-top: 1px dotted grey;
+            line-height: 2em;
+        }
+
+        .right div:last-child{
+            margin-top: 10%;
+        }
+
+
+        /*登录失败*/
+        .loginError{
+            text-align: center;
+            margin-top: 1rem;
+            color: #f01400;
+        }
+
+        .loginError p{
+            margin-top: 0;
+            margin-left: 0;
+            font-size: 1.5rem;
+        }
+
+
+    </style>
+
+    <!--Response-->
+    <style>
+        @media only screen and (max-width: 30em) {
+
+            header{
+                display: none;
+            }
+
+            .left{
+                margin: 10% auto;
+                float: none;
+                width: 80%;
+            }
+
+            .left form{
+                width: 100%;
+            }
+
+            header .logo{
+                display: none;
+            }
+
+            .left h3{
+                margin-top: 1rem;
+                font-size: 1.8rem!important;
+            }
+
+            .left p,
+            .left ul{
+                display: none;
+            }
+
+            .left img:first-child{
+                display: none;
+            }
+
+            .left img:last-child{
+                margin: 0 auto!important;
+            }
+
+            .right{
+                margin:10% auto ;
+                float: none;
+                width: 70%;
+            }
+        }
+
+        @media only screen and (max-width: 50em ) {
+            header ul{
+                margin-right: 5%!important;
+            }
+            .right{
+                clear: both;
+            }
+            .left h3{
+                margin-left: 0;
+                text-align: center;
+                font-size: 2rem;
+            }
+
+            .left form{
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 30.0625em) and (max-width: 50em) {
+            header li{
+                margin-right: 2px;
+                font-size: 12px;
+            }
+
+            .left{
+                margin: 10% auto;
+                float: none;
+            }
+
+            .left ul{
+                margin-left: 0;
+            }
+
+            .left p{
+                font-size: 1.2rem!important;
+            }
+
+            .left .back{
+                display: inline;
+            }
+
+            .left ul{
+                display: none;
+            }
+
+            .right{
+                margin: 0% auto;
+                float: none;
+                width: 70%;
+            }
+        }
+    </style>
+
+    <!--jQuery-->
+    <script>
+//        validate
+        $(function(){
+            $("#QQForm").validate({
+                rules:{
+                    login:{
+                        required:true,
+                        minlength:5
+                    },
+                    pwd:{
+                        required:true,
+                        minlength:5
+                    }
+                },
+                messages:{
+                    login:{
+                        required:"你还没有输入账号!",
+                        minlength:"请输入正确的账号!"
+                    },
+                    pwd:{
+                        required:"你还没有输入密码!",
+                        minlength:"请输入正确的密码！"
+                    }
+                }
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+<header class="navbar-fixed-top">
+    <div class="logo">
+
+        <h3>
+            <img src="../../img/Login/QQ_Penguin_tencent_128px_500133_easyicon.net.png" alt="QQ头像">
+            QQ登录
+        </h3>
+    </div>
+
+    <ul>
+
+        <li><a href="">申请接入</a></li>
+
+        <li>
+            <a href="">授权管理</a>
+            <span>|</span>
+        </li>
+
+        <li>
+            <a href="">QQ登录</a>
+            <span>|</span>
+        </li>
+    </ul>
+</header>
+<div class="container row">
+    <div class="left col-sm-7">
+        <h3>账号密码登录</h3>
+        <p>推荐使用<a href="">快速安全登录</a>，防止盗号。</p>
+        <!--登录-->
+        <form action="#" method="post" id="QQForm">
+            <div>
+                <input type="text" class="form-control" name="login" placeholder="支持QQ号/邮箱/手机号登录">
+                <span></span>
+            </div>
+            <div>
+                <input type="text" class="form-control" name="pwd" placeholder="密码">
+                <span></span>
+            </div>
+
+
+            <div class="loginError">
+                <p>
+                    ${loginError}
+                </p>
+            </div>
+
+            <div>
+                <input type="submit" value="授权并登录" class="btn btn-success">
+            </div>
+        </form>
+
+        <ul>
+            <li>
+                <a href="">忘了密码?</a>
+                <span>|</span>
+            </li>
+
+            <li>
+                <a href="">注册新账号</a>
+                <span>|</span>
+            </li>
+
+            <li><a href="">意见反馈</a></li>
+        </ul>
+    </div>
+    <div class="right col-sm-3">
+
+        <p><a href="">慕课网</a>将获得以下权限:</p>
+
+        <form>
+            <p>
+                <input type="checkbox">全选
+            </p>
+
+            <p>
+                <input type="checkbox" checked="true" disabled="true">获得你的昵称、头像、性别
+            </p>
+        </form>
+        <div>
+            授权后表明你已同意<a href="">QQ登录服务协议</a>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

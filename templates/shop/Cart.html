@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+
+    <!--CSS-->
+    <style>
+
+        body{
+            font-size: 1.5rem;
+        }
+        /*取消row的默认样式*/
+        .row{
+            padding: 0;
+            margin: 0;
+        }
+        /*取消container的默认样式*/
+        .container{
+            width: 100%;
+        }
+
+        /*淡灰色*/
+        .lightgrey{
+            color: #93999F;
+        }
+
+        /*红色*/
+        .lightred{
+            color:#EF1919;
+
+
+        }
+
+        .darkred{
+            color:#F01418;
+        }
+
+
+        /*我的购物车标题这块*/
+        .top{
+            height: 10rem;
+            background: url("{% static 'img/实战购物车.png' %}")repeat-x;
+            position: relative;
+            border: 1px solid grey;
+        }
+
+        /*我的购物车*/
+        .top h1{
+            float: left;
+            font-weight: bold;
+            margin-left: 10%;
+            padding-top:1% ;
+        }
+
+        /*共x门课程，已选择X件*/
+        .top .pleft{
+            float: left;
+            margin-top: 4rem;
+            margin-left: 1rem;
+            width: 30%;
+            font-size: 1.5rem;
+        }
+
+        /*我的订单历史*/
+        .top .pright{
+            float: right;
+            margin-top: 3rem;
+            margin-right: 10%;
+        }
+
+        /*购物车*/
+        #cart{
+            position: relative;
+            width: 80%;
+            border: 1px solid lightgray;
+            margin: -2% auto;
+            z-index: 2;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 6px 2px #E8E9EA;
+        }
+
+        /*购物车空空如也*/
+        #cart div h3{
+            color: #93999F;
+            margin: 7% auto;
+            width: 18%;
+        }
+
+        .hide{
+            display: none;
+        }
+
+        /*购物车内容*/
+        #cart table{
+            width: 100%;
+        }
+
+        /*购物车全选*/
+        #cart table td input[type=checkbox]{
+            width: 20px;
+        }
+
+        /*购物车排版*/
+
+        /*第一行第一列排版*/
+        #cart table tr:first-child td:nth-child(1){
+            width: 7%;
+        }
+
+        /*第一列checkbox样式*/
+        #cart table tr td input[type=checkbox]{
+            margin-left: 25%;
+        }
+
+        /*全选样式*/
+        #cart table tr:first-child td:first-child span{
+            color: #93999F;
+            margin-left: 5%;
+        }
+
+        /*第一行第二列排版*/
+        #cart table tr:first-child td:nth-child(2){
+            text-indent: 2.5rem;
+        }
+
+        /*第一行排版*/
+        #cart table tr:first-child{
+            height: 5rem;
+            width: 80%;
+        }
+
+        #cart table tr:first-child >tr{
+            width: 80%;
+            border: 1px solid grey;
+            height: 1px;
+        }
+
+        /*课程内容整体排版*/
+        #cart table tr:not(:first-child) div{
+            position: relative;
+            margin: 1rem 0rem;
+            padding: 1rem;
+        }
+
+        /*课程内容图片排版*/
+        #cart table tr:not(:first-child) td:nth-child(2) div img{
+            float: left;
+            width: 15rem;
+            max-width: 100%;
+        }
+
+        /*课程内容文字排版*/
+        #cart table tr:not(:first-child) td:nth-child(2) div>div{
+            float: left;
+            width: 50%;
+            top: 0rem;
+        }
+
+        /*课程内容文字排版*/
+        #cart table tr:not(:first-child) td:nth-child(2) div>div h4{
+            font-weight: bold;
+        }
+
+        /*返回继续选课*/
+        form > div:nth-child(2){
+            width: 10%;
+            float: left;
+            font-size: 16px;
+            margin-left: 5%;
+            margin-top: 5%;
+            min-width: 26%;
+        }
+
+        /*底下的全选*/
+        form > div:nth-last-child(3){
+            display: none;
+        }
+
+        /*去结算div*/
+        form > div:nth-last-child(2){
+            width: 30%;
+            float: right;
+            margin-top: 2%;
+        }
+
+        /*总价*/
+        /*定位*/
+        form > div:nth-last-child(2) p:first-child{
+            margin-top: 5%;
+        }
+
+        form > div:nth-last-child(2) p:nth-child(2){
+            margin-top: -1%;
+        }
+
+        form > div:nth-last-child(2) p:first-child,
+        form > div:nth-last-child(2) p:nth-child(2){
+            width: 70%;
+        }
+
+        /*￥*/
+        form > div:nth-last-child(2) p >span:first-child{
+            position: relative;
+            top: -1.2rem;
+        }
+
+        /*money*/
+        form > div:nth-last-child(2) p >span:last-child{
+            font-size: 2.5rem;
+            position: relative;
+            top:-1%;
+        }
+
+        /*input*/
+        form > div:nth-last-child(2)> input{
+            width: 40%;
+            border-radius: 0px;
+            height: 5.5rem;
+            float: right;
+            margin-top: -24%;
+            margin-right: 8%;
+            border: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 22px;
+            background-color: #F01414;
+        }
+
+        /*清除上两个浮动*/
+        form > p:last-child{
+            clear: both;
+        }
+    </style>
+
+    <!--Response-->
+    <style>
+        @media only screen and (max-width: 30em) {
+            /*我的购物车*/
+            .top{
+                display: none;
+            }
+
+            /*内容整体*/
+            #cart{
+                background-color: lawngreen!important;
+                width: 100%;
+            }
+
+            /*我的订单历史*/
+            a.pright{
+                display: none;
+            }
+
+            /*共2门课程...*/
+            p.pleft{
+                display: none;
+            }
+
+            /*返回继续选课*/
+            a.lightred{
+                display: none;
+            }
+
+            /*去结算*/
+            form > div:nth-last-child(2){
+                margin: 0 auto;
+                float: none;
+            }
+
+            /*X*/
+
+            #cart table tr:not(:first-child) td:last-child{
+                display: none;
+            }
+
+            /*应付金额*/
+            form > div:nth-last-child(2) p:first-child{
+                width: 100%;
+            }
+
+            /*金额*/
+            form > div:nth-last-child(2) p:nth-child(2){
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            /*第一行第二列课程*/
+            #cart table tr:first-child td:nth-child(2){
+                display: none;
+            }
+
+            /*第一行第三列金额*/
+            #cart table tr:first-child td:nth-child(3){
+                display: none;
+            }
+
+            /*第一行第一列全选*/
+            #cart table tr:first-child td:nth-child(1){
+                display: none;
+            }
+
+            /*第一行*/
+            #cart table tr:first-child{
+                display: none;
+            }
+
+            /*课程名称*/
+            #cart table tr:not(:first-child) td:nth-child(2) div>div h4{
+                font-size: 1.4rem!important;
+            }
+
+            /*90天慕课云服务*/
+            #cart table tr:not(:first-child) td:nth-child(2) div>div p{
+                display: none;
+            }
+
+            /*底下的全选*/
+            form > div:nth-last-child(3){
+                display: block;
+            }
+        }
+
+        @media only screen and (min-width: 30.0625em) and (max-width: 50em) {
+
+        }
+
+        @media only screen and (max-width: 50em) {
+            #cart{
+                background-color: deepskyblue;
+            }
+
+            /*共X门课程...*/
+            .top .pleft{
+
+            }
+
+            /*我的订单历史*/
+            .top .pright{
+                margin-right: 0%;
+            }
+
+            /*操作*/
+            #cart table tr:first-child td:last-child{
+                display: none;
+            }
+
+            /*X*/
+            #cart table tr:not(:first-child) td:last-child{
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            /*课程名称*/
+            #cart table tr:not(:first-child) td:nth-child(2) div>div h4{
+                font-size: 1.7rem;
+                width:220%;
+            }
+
+            /*赠送云服务*/
+            #cart table tr:not(:first-child) td:nth-child(2) div>div p{
+                font-size: 1.5rem;
+                width: 200%;
+                border: 1px solid grey;
+            }
+
+            /*去结算*/
+            form > div:nth-last-child(2)> input{
+                float: none;
+                margin-top: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+        }
+
+    </style>
+
+    <!--JS-->
+{#    <script>#}
+{#        $(function(){#}
+{#//            全选#}
+{#            var selectAll=$("input[name=selectAll]");#}
+{#//            选择item#}
+{#            var selectItem=$("input[name=checkItem]");#}
+{##}
+{#//            总价#}
+{#            var totalPrice=$(".totalPrice");#}
+{#            var price=0;#}
+{##}
+{#//            共几门课程#}
+{#            var total=$(".pleft > span:first-child");#}
+{#            var courseNum=$(".course").length;#}
+{#            total.text(courseNum);#}
+{##}
+{#//            已选择#}
+{#            var sel=$(".pleft > span:last-child");#}
+{##}
+{#            selectItem.click(function(){#}
+{#                getTotalMoney();#}
+{#            });#}
+{##}
+{##}
+{##}
+{#//            全选#}
+{#            selectAll.click(function(){#}
+{#                selectItem.prop("checked",selectAll.prop("checked"));#}
+{#                getTotalMoney();#}
+{#            });#}
+{##}
+{##}
+{#            function getTotalMoney(){#}
+{#                price=0;#}
+{#                $("input[name=checkItem]:checked").each(function(){#}
+{#                    price+=parseInt($(this).parent().parent().find(".money").text());#}
+{#                });#}
+{#                totalPrice.text(price);#}
+{#                courseNum=$("input[name=checkItem]:checked").length;#}
+{#                $(".lightred:last-child").text(courseNum);#}
+{#            }#}
+{#        });#}
+{#    </script>#}
+
+    <script>
+        $(function(){
+        	isNull();
+//            全选
+            var selectAll=$("input[name=selectAll]");
+//            选择item
+            var selectItem=$("input[name=checkItem]");
+
+//            总价
+            var totalPrice=$(".totalPrice");
+            var price=0;
+
+//            已选择
+            var sel=$(".pleft > span:last-child");
+
+//			提交表单
+			var cartForm=$("#cartForm");
+
+			//弹出层
+			var mask=$(".noChoiceMask");
+			var alert=$(".noChoice-modal");
+
+			mask.css("display","none");
+			alert.css("display","none");
+
+            selectItem.click(function(){
+				getTotalMoney();
+            });
+
+//            全选
+            selectAll.click(function(){
+				selectItem.prop("checked",selectAll.prop("checked"));
+				getTotalMoney();
+            });
+
+
+//			是否选择判断
+
+			cartForm.submit(function(){
+			var selectItemed=$("input[name=checkItem]:checked");
+
+			if(selectItemed.length==0){
+			mask.css({"display":"block","width":"100%","height":"100%"});
+			alert.css("display","block");
+				return false;
+			}
+
+			});
+
+			//mask点击
+			mask.click(function(){
+				$(this).css("display","none");
+{#				alert.css("display","none");#}
+			});
+
+			function getTotalMoney(){
+				price=0;
+				$("input[name=checkItem]:checked").each(function(){
+					price+=parseInt($(this).parent().parent().find(".money").text());
+{#					alert(price);#}
+				});
+				totalPrice.text(price);
+				courseNum=$("input[name=checkItem]:checked").length;
+				$(".pleft > span:last-child").text(courseNum);
+			}
+
+//            删除
+{#            var del=$(".course").parent().parent().find("td:last-child");#}
+{#            del.click(function(){#}
+{#                $(this).parent().remove();#}
+{#                getTotalMoney();#}
+{#                getCourseNum();#}
+{#                isNull();#}
+{#                #}
+{#                $.ajax({#}
+{#                	type:"GET",#}
+{#                	url:"CartServlet?type=del&fId="+$(this).find(".hide").text(),#}
+{#                	success:function(){#}
+{##}
+{#                	},#}
+{#                	error:function(){#}
+{##}
+{#                	}#}
+{#                	#}
+{#                });#}
+{#                #}
+{#            });#}
+        });
+
+        function isNull(){
+            var tr=$("input[type=checkbox]").parent().parent();
+            var hide=$(".hidee");
+            var show=$(".showw");
+
+            if(tr.length==2){
+                hide.show();
+                show.hide();
+            }
+        }
+    </script>
+
+
+
+</head>
+<body>
+    <div class="row container">
+        <!--购物车title-->
+        <div class="top">
+            <div><h1>我的购物车</h1>
+
+            <p class="pleft">共<span class="lightred">{{ fight_num }}</span>门课程，已选择<span class="lightred">0</span>件</p>
+            </div>
+            <a href="{% url 'shop:pay_history' %}" class="pright" target="_blank">我的订单历史</a>
+        </div>
+        <!--购物车内容-->
+        <div id="cart">
+            {% ifequal fight_num 0 %}
+                <div>
+                    <h3>购物车内空空如也</h3>
+                </div>
+
+            {% else %}
+                <div>
+                <form action="{% url 'shop:settlement' %}" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="selectAll"/><span class="lightgrey">全选</span>
+                            </td>
+
+                            <td>课程</td>
+                            <td>金额</td>
+                            <td>操作</td>
+                        </tr>
+
+                        {% for fight in fights %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="checkItem" value="{{ fight.id }}" class="course"/>
+                                </td>
+                                <td>
+                                    <div>
+                                        <img src="{{ MEDIA_URL }}{{ fight.image }}" class="img-responsive" alt="{{ fight.name }}">
+                                        <div>
+                                            <h4>{{ fight.name }}</h4>
+                                            <p class="lightgrey">赠送{{ fight.cloud_service }}天的慕课云服务</p>
+                                        </div>
+                                    </div>
+
+
+                                </td>
+                                <td class="lightred">￥<span class="money">{{ fight.price }}</span></td>
+                                <td><a href="{% url 'shop:del_cart' fight.id %}">X</a></td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                    <div>
+                        <a href="{% url 'fight:index' %}" class="lightred" target="_blank">返回继续选课</a>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="selectAll"/>全选
+                    </div>
+                    <div>
+                        <p>应付金额：</p>
+                        <p class="darkred"><span>￥</span><span class="totalPrice">0</span></p>
+                        <input type="submit" value="去结算"/>
+                        {% csrf_token %}
+                    </div>
+                    <p></p>
+
+                </form>
+
+            </div>
+            {% endifequal %}
+
+
+
+
+
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon/font-awesome-4.6.3/css/font-awesome.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Common.css' %}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/Common.js' %}"></script>
+    <style>
+
+        /*banner*/
+        .banner-bg{
+            background-color: #d9dde1;
+            width: 100%;
+            height: 360px;
+            position: relative;
+            z-index: 8;
+
+        }
+
+        .banner-box{
+            width: 90%;
+            margin: 0 auto;
+            height: 432px;
+        }
+
+        /*Banner-Pic*/
+        .banner-pic{
+            margin-top: 32px;
+            display: inline-block;
+            height: 400px;
+            overflow: hidden;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+        }
+
+        /*左边图片*/
+        .left-pic{
+            float: left;
+            width: 880px;
+            overflow: hidden;
+        }
+
+        .left-pic img{
+            float: left;
+        }
+
+        .left-pic a{
+            position: relative;
+            float: left;
+            overflow: hidden;
+        }
+
+        /*右边图片*/
+        .right-pic{
+            position: relative;
+            float: left;
+            overflow: hidden;
+        }
+
+
+        /*首发课程*/
+        .courses{
+            width: 100%;
+            margin-top: 8rem;
+            padding: 0rem 5rem;
+        }
+
+        /*课程-list*/
+        .course-wrap{
+            float: left;
+            margin: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /*课程-box*/
+        .course-box{
+            width: 224px;
+            height: 172px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /*课程-info*/
+        .course-box .course-info{
+            box-sizing: border-box;
+            position: absolute;
+            padding: 0 20px;
+            transition:top .5s;
+            top: 65px;
+            height: 144px;
+            width: 100%;
+            background: url("{% static 'img/bg-course.png' %}");
+        }
+
+        /*课程-name*/
+        .course-box .course-info h3{
+            margin: 0;
+            padding: 16px 0px 16px;
+            font-size: 1.4rem;
+            max-height: 40px;
+            overflow: hidden;
+            color: #07111b;
+            line-height: 21px;
+        }
+
+        /*课程-detail*/
+        .course-box .course-info p{
+            color: #93999F;
+            font-size: 1.2rem;
+            height: 40px;
+            overflow: hidden;
+            line-height: 20px;
+        }
+
+        /*课程-bottom*/
+        .course-box .course-bottom{
+            position: absolute;
+            padding: 0px 20px;
+            bottom: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 42px;
+            background-color: #ffffff;
+            color: #93999F;
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+
+        /*课程-price*/
+        .course-box .course-bottom span:first-child{
+            float: left;
+            color: #FE1300;
+        }
+
+        /*课程-stus*/
+        .course-box .course-bottom span:last-child{
+            float: right;
+        }
+
+
+        /*课程——已购买*/
+        .course-wrap .buyed{
+            position: absolute;
+            left: -4px;
+            top: 4px;
+            z-index: 1;
+            font-size: 1.5rem;
+            color: #ffffff;
+            padding: 0px 6px;
+            height: 20px;
+            line-height: 20px;
+            background: #00b33b;
+        }
+
+        /*讲师*/
+        .teacher{
+            height: 605px;
+            background: url("{% static 'img/FightIndex/teacher.jpg' %}")no-repeat;
+            overflow: hidden;
+            background-size: cover;
+            position: relative;
+            margin-top: 5rem;
+        }
+
+        /*讲师-居中*/
+        .teacher > div{
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 605px;
+            overflow: hidden;
+            width: auto;
+            position: relative;
+        }
+
+        /*讲师-info*/
+        .teacher-info{
+            width: auto;
+            position: relative;
+            height: 236px;
+            overflow: hidden;
+        }
+
+        .teacher-info h2{
+            text-align: center;
+            color: #ffffff;
+            font-size: 4.5rem;
+            margin-top: 5rem;
+            font-weight: bold;
+        }
+
+        .teacher-info p{
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.6rem;
+            line-height: 2rem;
+            margin-top: 2rem;
+        }
+
+        /*讲师-list*/
+        .teacher .teacher-detail{
+            width: 100%;
+            position: absolute;
+            top: 225px;
+
+        }
+
+        .teacher .teacher-detail li{
+            position: relative;
+            float: left;
+            padding-top: 48px;
+            width: 300px;
+            height: 380px;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+
+        /*讲师-img*/
+        .teacher ul li > span{
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /*讲师-star-info*/
+        .teacher ul li .star-info{
+            text-align: center;
+        }
+
+        /*讲师-name*/
+        .star-info h3{
+            font-size: 3rem;
+            color: #ffffff;
+            line-height: 3rem;
+            margin-top: 1rem;
+        }
+
+        /*讲师-job*/
+        .star-info p{
+            font-size: 1.5rem;
+            color: #ffffff;
+            line-height: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /*讲师-info*/
+        .star-info span{
+            font-size: 1.2rem;
+            color: #93999F;
+            line-height: 1.8rem;
+            text-align: left;
+            margin-top: 20px;
+            padding: 0 20px;
+            display: none;
+        }
+
+        /*讲师-Course*/
+        .star-info .star-course{
+            margin: 15px 20px 0;
+            padding-top: 15px;
+            border-top: 1px solid #d9dde1;
+            font-size: 1.2rem;
+            line-height: 2rem;
+            display: none;
+        }
+
+        .star-info .star-course a{
+            display: block;
+            color: #F01414;
+        }
+
+        /*讲师-btn*/
+        .teacher .teacher-btn{
+            position: absolute;
+            left: 0;
+            bottom: 1rem;
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .teacher .teacher-btn li{
+            border-radius:25px;
+            width: 1rem;
+            height: 1rem;
+            margin: 0 5px;
+            display: inline-block;
+            border: 2px solid rgba(255, 255, 255, 0.4) ;
+            cursor: pointer;
+        }
+
+        /*按钮显示*/
+        .on{
+            background: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+    </style>
+    <script>
+        $(function(){
+//            课程hover
+            courseHover();
+
+//            讲师hover
+            var teachers=$(".teacher-detail li");
+            teachers.mouseover(function(){
+                $(this).css({"background-color":"white","top":"-15rem","border-radius":"5px","height":"480px"});
+                $(this).find(".star-info h3").css("color","black");
+                $(this).find(".star-info p").css("color","black");
+                $(this).find(".star-info span").css("display","block");
+                $(this).find(".star-course").css("display","block");
+            }).mouseout(function(){
+                $(this).css({"background-color":"transparent","top":"0","border-radius":"0","height":"380px"});
+                $(this).find(".star-info h3").css("color","white");
+                $(this).find(".star-info p").css("color","white");
+                $(this).find(".star-info span").css("display","none");
+                $(this).find(".star-course").css("display","none");
+            });
+
+//            已购
+            var a=$(".course-wrap a");
+            a.click(function(event){
+                if($(this).parent().parent().find(".buyed").length>0){
+                    event.preventDefault();
+                }
+            });
+        })
+    </script>
+    <!--轮播-->
+    <script>
+        $(function(){
+//            容器
+            var banner=$(".teacher-detail");
+
+//            detail_item
+            var detail_item=$(".teacher-detail .detail_item");
+//            size
+            var size=$(".teacher-detail .detail_item").size();
+
+//            添加圆点
+            for(var j=0;j<size-1;j++){
+                $(".teacher-btn").append("<li data='"+j+"'></li>");
+            };
+
+//            圆点
+            var btn=$(".teacher-btn li");
+            btn.first().addClass("on");
+
+//            下标
+            var i=0;
+
+//            圆点btn
+            btn.hover(function(){
+                i=$(this).attr("data");
+                movie();
+            });
+
+            function movie() {
+                if(i==size-1){
+                    i=0;
+                    banner.css({left:0});
+                };
+
+                if(i==-1){
+                    banner.css({left:-(size-1)*1200});
+                };
+
+                banner.stop().animate({left:-i*1200},500);
+
+                btn.eq(i).addClass("on").siblings().removeClass("on");
+            };
+
+//            自动播放
+            var timer=setInterval(function(){
+                i++;
+                movie();
+            },2000);
+
+//            hover停止
+            banner.add(btn).hover(function(){
+                clearInterval(timer);
+            },function(){
+                timer=setInterval(function(){
+                    i++;
+                    movie();
+                },2000);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <!--banner-->
+    <div class="row banner-bg">
+        <!--容器-->
+        <div class="banner-box">
+            <div class="banner-pic">
+                <!--Pic-Left-->
+                <div class="left-pic">
+                    <img src="{% static 'img/FightIndex/banner01.jpg' %}" class="img-responsive" alt="战以学 学为站"/>
+                    <a href="#">
+                        <img src="{% static 'img/FightIndex/banner03.jpg' %}" class="img-responsive" alt="线上编程工具免费用"/>
+                    </a>
+                    <img src="{% static 'img/FightIndex/banner04.jpg' %}" class="img-responsive" alt="一线互联网公司技术大牛"/>
+                </div>
+                <!--Pic-Right-->
+                <div class="right-pic">
+                    <a href="#">
+                        <img src="{% static 'img/FightIndex/banner02.jpg' %}" class="img-responsive" alt="上进唯实战可得"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--首发课程-->
+    <div class="row courses">
+        <h2>首发课程</h2>
+        <!--课程清单-->
+        <div class="course-list">
+
+            {% for fight in all_fight %}
+                    <div class="course-wrap">
+                    {% for account_fight in account_fights %}
+                        {% ifequal account_fight.id fight.id %}
+                            <div class="buyed">
+                                已购买
+                            </div>
+                        {% endifequal %}
+                    {% endfor %}
+                        <a href="#" class="click">
+                            <div class="course-box">
+                                <a href="{% url 'fight:detail' fight.id %}">
+                                    <img src="{{ MEDIA_URL }}{{ fight.image }}" class="img-responsive" alt="{{ fight.name }}"/>
+
+                                    <div class="course-info">
+                                        <h3>{{ fight.name }}</h3>
+                                        <p>{{ fight.abstract }}</p>
+                                    </div>
+                                    <div class="course-bottom">
+                                        <span>￥{{ fight.price }}</span>
+                                        <span>{{ fight.students }}人学习</span>
+                                    </div>
+
+                                </a>
+
+                            </div>
+                        </a>
+                    </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <!--讲师-->
+    <div class="row teacher">
+        <!--主内容-->
+        <div>
+            <div class="teacher-info">
+                <h2>配得上大牛称号的讲师来教你</h2>
+
+                <p>实战课讲师均来自阿里、百度、腾讯、京东、小米等一线互联网公司，
+                    <br/>
+                    具有多年技术积淀及开发经验，手把手带你做真实项目，让你告别零项目经验。
+                </p>
+            </div>
+            <ul class="teacher-detail" style="width:6000px;left: 0px;">
+            <div class="detail_item">
+                <!--nate-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-nate.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>nate</h3>
+
+                        <p>资深移动开发工程师</p>
+                    <span>
+                        任爽老师喜欢把技术分为两类，一类是让你走的更新的技术，“学会某种语言或新特性，能快速上手开发产品”；一类是让你走的更远的技术，“学会优秀的设计思想、模式，真正懂得代码之间的优劣，能设计出适合业务需求的架构，让代码更灵活、优雅，更能应对未来的变化”。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">从Okhttp3入手洞悉Android网络框架设计</a>
+                        </div>
+                    </div>
+                </li>
+                <!--liuyubobobo-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-liuyubobobo.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>liuyubobobo</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        他是ACM实力得主，曾获ACM省级金奖、亚洲区铜奖。在开发领域卓有建树，对产品设计、前后端、智能算法等领域均有接触，曾制作近20款个人独立App，并全部成功上架。授课风趣清晰，有极强的感染力，享有用户极高的评价“波总出品，必属精品”！
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">算法与数据结构C++精解</a>
+                        </div>
+                    </div>
+                </li>
+                <!--李_捷-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-李_捷.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>李_捷</h3>
+
+                        <p>PHP高级工程师</p>
+                    <span>
+                        85后，6年项目开发经验，作为一名程序员的“老师”，他拥有深厚的教学功底。工程师和老师的双重身份，让他更理解学生的痛点，他的课程不仅直击要害，而且简洁易懂，将实践和理论完美结合。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">Yii2.0全力出击打造完整电商平台</a>
+                        </div>
+                    </div>
+                </li>
+                <!--表严肃-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-表严肃.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>表严肃</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        6年全栈开发经历，执迷于新技术研究，新技术的狂热追求者，乐于分享，传道。如果你想以最快的速度熟悉新技术，开阔思维，表严肃就是你近在咫尺的良师益友。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> jQuery 搭建任务清单应用</a>
+                            <a href="#"> 双剑合璧Laravel，AngularJS全栈开发知乎</a>
+                        </div>
+                    </div>
+                </li>
+                <!--Scott-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-Scott.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>Scott</h3>
+
+                        <p>nodejs技术专家</p>
+                    <span>
+                        是国内最早接触 Node.js 的工程师，也是最早用 Node.js 做开发的工程师之一，拥有大量 Node.js 全站开发经验，是新技术的追求者和传播者，对于课程他认真细致，有着近乎完美的追求。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> 贯穿全栈React Native开发App</a>
+                            <a href="#"> 7天搞定Node.js微信公众号开发</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+            <div class="detail_item">
+                <!--远人-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-远人.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>远人</h3>
+
+                        <p>前端架构师</p>
+                    <span>
+                        国内最早一批HTML5实践者，先后就职于腾讯、人人网、小米、美团。具有丰富的海量服务前端开发经验，在慕课网拥有近20万学员，是学生眼中的明星讲师。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> HTML5 移动Web App阅读器</a>
+                        </div>
+                    </div>
+                </li>
+                <!--Lyn-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-Lyn.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>Lyn</h3>
+
+                        <p>百度前端工程师</p>
+                    <span>
+                        追求代码界面的可扩展性、性能、设计和出色的用户体验，对代码复用、组件化有深入研究，是新技术追求者、代码极客、慕课网明星讲师。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> 组件方式开发 Web App全站 </a>
+                        </div>
+                    </div>
+                </li>
+                <!--singwa-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-singwa.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>singwa</h3>
+
+                        <p>PHP开发工程师</p>
+                    <span>
+                        拥有丰富的大数据、高并发处理、大型网站架构经验。曾在新浪视频负责PHP开发，CCTV6电影网项目经理，现在某大型知名互联网公司负责大数据流的开发。讲课风格激情澎湃，认真负责。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> 前端到后台ThinkPHP开发整站 </a>
+                        </div>
+                    </div>
+                </li>
+                <!--程序员硕-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-程序员硕.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>程序员硕</h3>
+
+                        <p>资深开发工程师/架构师</p>
+                    <span>
+                        曾就职于全球领先的半导体公司Freescale、清华大学信研院等知名企业及研究机构。是国内著名开源项目skyeye中Python架构的贡献者。具有多年开发及教学双重经验，精通多种语言。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> Python项目实战-核心技术进阶训练篇 </a>
+                        </div>
+                    </div>
+                </li>
+                <!--vczero_-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-vczero_.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>vczero_</h3>
+
+                        <p> 现阿里技术专家</p>
+                    <span>
+                        拥有多年的前端node·js开发和架构经验，曾在高德地图、携程等大企业就职，做过基础技术架构，带过研发团队。同时对React Native有很深的理解，是《React Native入门与实战》的作者，还是infoQ、OSC等会议讲师。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">React Native快速开发App一步到位 </a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+            <div class="detail_item">
+                <!--ParryKK-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-ParryKK.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>ParryKK</h3>
+
+                        <p> 前阿里前端工程师</p>
+                    <span>
+                        前阿里前端工程师，先后创立饭妈妈、咕咕监控。微软技术社区精英，具有多年实战项目开发与管理经验，从前端到全栈，再到移动端，在追求技术的道路上，他更是发现了Ionic这样的跨平台开发利器，并将其运用的出神入化。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">飞速上手的跨平台App开发 </a>
+                        </div>
+                    </div>
+                </li>
+                <!--姜维_Wayne-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-姜维_Wayne.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>姜维_Wayne</h3>
+
+                        <p> 前端架构师</p>
+                    <span>
+                        10余年互联网从业经验，拥有丰富的前后端开发、敏捷过程、项目管理经验，负责过多个产品和技术团队，一直奋斗在Full Stack道路上，爱技术，爱创业，爱一切新事物，玩过乐队，喜欢折腾！
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">所向披靡的响应式开发 </a>
+                        </div>
+                    </div>
+                </li>
+                <!--sqlercn-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-sqlercn.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>sqlercn</h3>
+
+                        <p> 数据库架构师</p>
+                    <span>
+                        进行过千万级的数据处理，在大数据业务，高并发时数据优化等方面拥有丰富的经验。十几年数据库管理经验，曾就职于聚美优品、猫扑、TOM等多家大型互联网公司。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">打造扛得住的MySQL数据库架构</a>
+                        </div>
+                    </div>
+                </li>
+                <!--nate-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-nate.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>nate</h3>
+
+                        <p> 资深移动开发工程师</p>
+                    <span>
+                        任爽老师喜欢把技术分为两类，一类是让你走的更新的技术，“学会某种语言或新特性，能快速上手开发产品”；一类是让你走的更远的技术，“学会优秀的设计思想、模式，真正懂得代码之间的优劣，能设计出适合业务需求的架构，让代码更灵活、优雅，更能应对未来的变化”。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">从Okhttp3入手洞悉Android网络框架设计</a>
+                        </div>
+                    </div>
+                </li>
+                <!--liuyubobobo-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-liuyubobobo.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>liuyubobobo</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        他是ACM实力得主，曾获ACM省级金奖、亚洲区铜奖。在开发领域卓有建树，对产品设计、前后端、智能算法等领域均有接触，曾制作近20款个人独立App，并全部成功上架。授课风趣清晰，有极强的感染力，享有用户极高的评价“波总出品，必属精品”！
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">算法与数据结构C++精解</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+            <div class="detail_item">
+                <!--李_捷-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-李_捷.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>李_捷</h3>
+
+                        <p>PHP高级工程师</p>
+                    <span>
+                        85后，6年项目开发经验，作为一名程序员的“老师”，他拥有深厚的教学功底。工程师和老师的双重身份，让他更理解学生的痛点，他的课程不仅直击要害，而且简洁易懂，将实践和理论完美结合。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">Yii2.0全力出击打造完整电商平台</a>
+                        </div>
+                    </div>
+                </li>
+                <!--nate-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-nate.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>nate</h3>
+
+                        <p> 资深移动开发工程师</p>
+                    <span>
+                        任爽老师喜欢把技术分为两类，一类是让你走的更新的技术，“学会某种语言或新特性，能快速上手开发产品”；一类是让你走的更远的技术，“学会优秀的设计思想、模式，真正懂得代码之间的优劣，能设计出适合业务需求的架构，让代码更灵活、优雅，更能应对未来的变化”。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">从Okhttp3入手洞悉Android网络框架设计</a>
+                        </div>
+                    </div>
+                </li>
+                <!--liuyubobobo-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-liuyubobobo.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>liuyubobobo</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        他是ACM实力得主，曾获ACM省级金奖、亚洲区铜奖。在开发领域卓有建树，对产品设计、前后端、智能算法等领域均有接触，曾制作近20款个人独立App，并全部成功上架。授课风趣清晰，有极强的感染力，享有用户极高的评价“波总出品，必属精品”！
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">算法与数据结构C++精解</a>
+                        </div>
+                    </div>
+                </li>
+                <!--李_捷-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-李_捷.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>李_捷</h3>
+
+                        <p>PHP高级工程师</p>
+                    <span>
+                        85后，6年项目开发经验，作为一名程序员的“老师”，他拥有深厚的教学功底。工程师和老师的双重身份，让他更理解学生的痛点，他的课程不仅直击要害，而且简洁易懂，将实践和理论完美结合。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">Yii2.0全力出击打造完整电商平台</a>
+                        </div>
+                    </div>
+                </li>
+                <!--表严肃-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-表严肃.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>表严肃</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        6年全栈开发经历，执迷于新技术研究，新技术的狂热追求者，乐于分享，传道。如果你想以最快的速度熟悉新技术，开阔思维，表严肃就是你近在咫尺的良师益友。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> jQuery 搭建任务清单应用</a>
+                            <a href="#"> 双剑合璧Laravel，AngularJS全栈开发知乎</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+
+            <div class="detail_item">
+                <!--李_捷-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-李_捷.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>李_捷</h3>
+
+                        <p>PHP高级工程师</p>
+                    <span>
+                        85后，6年项目开发经验，作为一名程序员的“老师”，他拥有深厚的教学功底。工程师和老师的双重身份，让他更理解学生的痛点，他的课程不仅直击要害，而且简洁易懂，将实践和理论完美结合。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">Yii2.0全力出击打造完整电商平台</a>
+                        </div>
+                    </div>
+                </li>
+                <!--nate-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-nate.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>nate</h3>
+
+                        <p> 资深移动开发工程师</p>
+                    <span>
+                        任爽老师喜欢把技术分为两类，一类是让你走的更新的技术，“学会某种语言或新特性，能快速上手开发产品”；一类是让你走的更远的技术，“学会优秀的设计思想、模式，真正懂得代码之间的优劣，能设计出适合业务需求的架构，让代码更灵活、优雅，更能应对未来的变化”。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">从Okhttp3入手洞悉Android网络框架设计</a>
+                        </div>
+                    </div>
+                </li>
+                <!--liuyubobobo-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-liuyubobobo.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>liuyubobobo</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        他是ACM实力得主，曾获ACM省级金奖、亚洲区铜奖。在开发领域卓有建树，对产品设计、前后端、智能算法等领域均有接触，曾制作近20款个人独立App，并全部成功上架。授课风趣清晰，有极强的感染力，享有用户极高的评价“波总出品，必属精品”！
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">算法与数据结构C++精解</a>
+                        </div>
+                    </div>
+                </li>
+                <!--李_捷-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-李_捷.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>李_捷</h3>
+
+                        <p>PHP高级工程师</p>
+                    <span>
+                        85后，6年项目开发经验，作为一名程序员的“老师”，他拥有深厚的教学功底。工程师和老师的双重身份，让他更理解学生的痛点，他的课程不仅直击要害，而且简洁易懂，将实践和理论完美结合。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#">Yii2.0全力出击打造完整电商平台</a>
+                        </div>
+                    </div>
+                </li>
+                <!--表严肃-->
+                <li>
+                    <span style="background:url({% static 'img/FightIndex/teacher-表严肃.jpg' %}) no-repeat center center;"></span>
+                    <div class="star-info">
+                        <h3>表严肃</h3>
+
+                        <p>全栈工程师</p>
+                    <span>
+                        6年全栈开发经历，执迷于新技术研究，新技术的狂热追求者，乐于分享，传道。如果你想以最快的速度熟悉新技术，开阔思维，表严肃就是你近在咫尺的良师益友。
+                    </span>
+
+                        <div class="star-course">
+                            <a href="#"> jQuery 搭建任务清单应用</a>
+                            <a href="#"> 双剑合璧Laravel，AngularJS全栈开发知乎</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            </ul>
+        </div>
+        <!--轮播-btn-->
+        <ul class="teacher-btn">
+            <!--<li class="on" data="1"></li>-->
+            <!--<li class="" data="2"></li>-->
+            <!--<li class="" data="3"></li>-->
+            <!--<li class="" data="4"></li>-->
+        </ul>
+    </div>
+</body>
+</html>

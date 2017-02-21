@@ -1,0 +1,59 @@
+/*左侧导航*/
+.sidebar{
+    margin-top: 3rem;
+    margin-left: 8.5rem;
+}
+/*头像*/
+.sidebar div:first-child>img{
+    width: 15rem;
+    height: 15rem;
+    border: 0.3rem solid grey;
+    border-radius: 50%;
+}
+
+/*设置icon*/
+.sidebar div:first-child>a i{
+    position: absolute;
+    top: 3.5rem;
+    color: grey;
+    font-size: 2rem;
+}
+
+/*nav导航*/
+.sidebar .nav{
+    margin-top: 1.5rem;
+    margin-left: 2%;
+}
+.sidebar .nav li{
+    width: 13rem;
+    height: 3.75rem;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 1rem;
+}
+
+
+.sidebar .nav li a{
+    color: #787d82;
+    height: 3.7rem;
+    display: block;
+    line-height: 3.7rem;
+}
+
+/*导航文字*/
+.sidebar .nav li a span{
+    padding-left: 3rem;
+    font-size: 1.7rem;
+}
+
+/*左边icon*/
+.sidebar .nav ul li i{
+    float: left;
+    line-height: 3.7rem;
+    padding-left: 20px;
+}
+
+/*右边icon*/
+.sidebar .nav li b{
+    float: right;
+    line-height: 3.7rem;
+}
